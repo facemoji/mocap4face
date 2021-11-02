@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<co.facemoji.mocap4face.OrientedLinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mainLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/black"
+    android:orientation="vertical"
+    android:weightSum="1"
+    tools:context=".MainActivity">
+
+    <FrameLayout
+        android:id="@+id/facemojiContainer"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_weight="0.5" >
+
+        <TextView
+            android:id="@+id/timeout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center|top"
+            android:gravity="center"
+            android:paddingLeft="20dp"
+            android:paddingTop="20dp"
+            android:paddingRight="20dp"
+            android:text="@string/text_get_api_key"
+            android:textColor="@color/white"
+            android:visibility="gone" />
+
+        <ImageView
+            android:id="@+id/switchCamera"
+            android:layout_width="44dp"
+            android:padding="8dp"
+            android:src="@drawable/icon_camera"
+            android:layout_marginEnd="20dp"
+            android:layout_marginBottom="20dp"
+            android:layout_gravity="bottom|right"
+            android:layout_height="44dp"
+            android:contentDescription="@string/switch_camera" />
+    </FrameLayout>
+
+    <co.facemoji.mocap4face.BlendshapesView
+        android:id="@+id/blendshapes"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_weight="0.5"
+        android:clipToPadding="false"
+        android:elevation="16dp"
+        android:paddingTop="16dp"
+        android:paddingBottom="16dp" />
+
+
+</co.facemoji.mocap4face.OrientedLinearLayout>

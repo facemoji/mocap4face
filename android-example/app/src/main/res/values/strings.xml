@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">mocap4face</string>
+    <string name="text_get_api_key">The 90 seconds demo session has expired.\nGet an API key at studio.facemoji.co</string>
+    <string name="switch_camera">Switch camera</string>
+</resources>

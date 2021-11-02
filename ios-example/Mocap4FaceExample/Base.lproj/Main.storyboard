@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <capability name="Image references" minToolsVersion="12.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="collection view cell content view" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="Mocap4FaceExample" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="D5Y-27-wHx">
+                                <rect key="frame" x="0.0" y="44" width="414" height="406"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="HQA-BY-Qzi">
+                                <rect key="frame" x="0.0" y="458" width="414" height="359"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="ngK-F2-TIw">
+                                    <size key="itemSize" width="414" height="128"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="20" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="progressCell" id="fjf-qT-VzK" customClass="ProgressCell" customModule="Mocap4FaceExample" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="20" width="414" height="128"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="xdA-7p-8Ya">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="128"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yxC-cZ-GUA">
+                                                    <rect key="frame" x="20" y="57.5" width="128" height="13.5"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="128" id="PR4-9U-11p"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleCaption1"/>
+                                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="n3c-ga-7rF">
+                                                    <rect key="frame" x="168" y="62" width="226" height="4"/>
+                                                    <color key="progressTintColor" red="0.0" green="1" blue="0.80000000000000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <color key="trackTintColor" red="1" green="1" blue="1" alpha="0.20000000000000001" colorSpace="custom" customColorSpace="sRGB"/>
+                                                </progressView>
+                                            </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <constraints>
+                                                <constraint firstItem="yxC-cZ-GUA" firstAttribute="centerY" secondItem="xdA-7p-8Ya" secondAttribute="centerY" id="CMF-1f-i0S"/>
+                                                <constraint firstItem="n3c-ga-7rF" firstAttribute="leading" secondItem="yxC-cZ-GUA" secondAttribute="trailing" constant="20" id="Nod-w8-qKm"/>
+                                                <constraint firstAttribute="trailing" secondItem="n3c-ga-7rF" secondAttribute="trailing" constant="20" id="X88-Vn-3bZ"/>
+                                                <constraint firstItem="yxC-cZ-GUA" firstAttribute="leading" secondItem="xdA-7p-8Ya" secondAttribute="leading" constant="20" id="lj7-eO-Ge6"/>
+                                                <constraint firstItem="n3c-ga-7rF" firstAttribute="centerY" secondItem="xdA-7p-8Ya" secondAttribute="centerY" id="r3o-PB-txY"/>
+                                            </constraints>
+                                        </collectionViewCellContentView>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <size key="customSize" width="414" height="128"/>
+                                        <connections>
+                                            <outlet property="name" destination="yxC-cZ-GUA" id="IBY-uK-VPx"/>
+                                            <outlet property="progress" destination="n3c-ga-7rF" id="7Go-oI-1Rx"/>
+                                        </connections>
+                                    </collectionViewCell>
+                                </cells>
+                            </collectionView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="top" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Rb-Ap-nrm">
+                                <rect key="frame" x="93.5" y="64" width="227" height="26.5"/>
+                                <string key="text">The 90 seconds demo session has expired.
+Get an API key at studio.facemoji.co</string>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleCaption1"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <visualEffectView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qbD-JA-ICN">
+                                <rect key="frame" x="87" y="384" width="44" height="44"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="goZ-Mf-ttf">
+                                    <rect key="frame" x="0.0" y="0.0" width="44" height="44"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    <subviews>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cFL-R7-ruu">
+                                            <rect key="frame" x="0.0" y="0.0" width="44" height="44"/>
+                                            <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                            <state key="normal">
+                                                <imageReference key="image" image="CameraRotate" symbolScale="large"/>
+                                            </state>
+                                            <connections>
+                                                <action selector="onSwitchCameraClick:" destination="BYZ-38-t0r" eventType="touchUpInside" id="aWo-8H-BI1"/>
+                                            </connections>
+                                        </button>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="cFL-R7-ruu" firstAttribute="top" secondItem="goZ-Mf-ttf" secondAttribute="top" id="8iJ-aV-qKU"/>
+                                        <constraint firstAttribute="trailing" secondItem="cFL-R7-ruu" secondAttribute="trailing" id="eyR-bx-p3n"/>
+                                        <constraint firstItem="cFL-R7-ruu" firstAttribute="leading" secondItem="goZ-Mf-ttf" secondAttribute="leading" id="hel-JZ-xEU"/>
+                                        <constraint firstAttribute="bottom" secondItem="cFL-R7-ruu" secondAttribute="bottom" id="jsR-Td-Yf5"/>
+                                    </constraints>
+                                </view>
+                                <blurEffect style="light"/>
+                            </visualEffectView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="6Rb-Ap-nrm" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="20" id="iv0-hJ-6mU"/>
+                            <constraint firstItem="6Rb-Ap-nrm" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="j3U-g5-OYZ"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="cameraSwitchButtonBlur" destination="qbD-JA-ICN" id="S0e-PQ-f6o"/>
+                        <outlet property="cameraViewContainer" destination="D5Y-27-wHx" id="Oca-3m-DpR"/>
+                        <outlet property="lblText" destination="6Rb-Ap-nrm" id="sX2-fm-3Gg"/>
+                        <outlet property="tableView" destination="HQA-BY-Qzi" id="QSH-7d-Eli"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="137.68115942028987" y="129.91071428571428"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="CameraRotate" width="24" height="19"/>
+    </resources>
+</document>

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="horizontal"
+    android:gravity="center"
+    android:id="@+id/item_blendshape"
+    android:layout_height="20dp">
+
+    <TextView
+        android:id="@+id/name"
+        android:layout_marginLeft="20dp"
+        android:layout_width="128dp"
+        android:layout_height="wrap_content"
+        android:textColor="@color/white"
+        tools:text="blendshape_name" />
+
+    <SeekBar
+        android:id="@+id/progress"
+        android:layout_width="0dp"
+        android:paddingStart="20dp"
+        android:paddingEnd="20dp"
+        style="@style/SeekBarTheme"
+        android:progressTint="@color/colorAccent"
+        android:layout_weight="1"
+        android:progress="10"
+        android:min="0"
+        android:max="100"
+        android:thumb="@android:color/transparent"
+        android:layout_height="wrap_content" />
+
+</LinearLayout>
