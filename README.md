@@ -80,8 +80,8 @@ allprojects {
         // Any other repositories here...
 
         maven {
-            name = "GitHubPackages"
-            url = uri("https://maven.pkg.github.com/facemoji/mocap4face")
+            name = "Facemoji"
+            url = uri("https://facemoji.jfrog.io/artifactory/default-maven-local/")
         }
     }
 }
