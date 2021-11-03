@@ -14,6 +14,8 @@ With mocap4face, you can drive live avatars, build Snapchat-like lenses, AR expe
 
 Please ⭐ Star us on GitHub—it motivates us a lot!
 
+<img src="https://uc7215d99d36bf597572db038e01.previews.dropboxusercontent.com/p/thumb/ABU79iDuOHtrCx5uV1UX17qu1axpvwvdpGesw8LMVIQsC4cKiEtxDr0Ed-oqnRNsxMYktYq8davb7_y1riXppkGuGDB5jvQ3DfVD8uVKUtUVyit0VbXN9oLW1YxVAzPKXb23-1xIy-N01x9mzrUkN-UGI89THsoKhwq_5pMM-rt8T5IW5l8xAL77lbPC06RQQbpeORsKbEqYSFB_51Tbf3T_jjJgHp4DEfb6Eg86Tzkj1uyC8rwPa-rr2fuYT1vZ41XqhLL5zp0tbc3ipkie4Cb9oqEijNzhiBAKhFUc_mHF_tZ8PCESzzIzWY7W2ixEU5PJO4anHD1wLe8iygPkScxYG0-r3ev0efzQqPh8szc86T7LeIEbTaXZLyHXRJ_MQl3zvZ2eT08pdQ2oagc8NiFl/p.gif" width="100%">
+
 # 📋 Table of Content
 
 - [Tech Specs](#-tech-specs)
@@ -104,6 +106,8 @@ allprojects {
 
 # ❤️ Links
 
+- [FAQ](https://studio.facemoji.co/docs/FAQ_6b345137-5916-4017-b444-9d15398c8af0)
+- [Blog post](https://studio.facemoji.co/docs/Introducing-mocap4face-SDK_a660c539-b3fb-4f0b-a38e-3f4e850a5769)
 - [Facemoji Studio](https://studio.facemoji.co)
 - [Twitter](https://twitter.com/facemojihq)
 - [Discord](https://discord.gg/facemoji)
