@@ -14,7 +14,7 @@ With mocap4face, you can drive live avatars, build Snapchat-like lenses, AR expe
 
 Please ⭐ Star us on GitHub—it motivates us a lot!
 
-<img src="https://uc7215d99d36bf597572db038e01.previews.dropboxusercontent.com/p/thumb/ABU79iDuOHtrCx5uV1UX17qu1axpvwvdpGesw8LMVIQsC4cKiEtxDr0Ed-oqnRNsxMYktYq8davb7_y1riXppkGuGDB5jvQ3DfVD8uVKUtUVyit0VbXN9oLW1YxVAzPKXb23-1xIy-N01x9mzrUkN-UGI89THsoKhwq_5pMM-rt8T5IW5l8xAL77lbPC06RQQbpeORsKbEqYSFB_51Tbf3T_jjJgHp4DEfb6Eg86Tzkj1uyC8rwPa-rr2fuYT1vZ41XqhLL5zp0tbc3ipkie4Cb9oqEijNzhiBAKhFUc_mHF_tZ8PCESzzIzWY7W2ixEU5PJO4anHD1wLe8iygPkScxYG0-r3ev0efzQqPh8szc86T7LeIEbTaXZLyHXRJ_MQl3zvZ2eT08pdQ2oagc8NiFl/p.gif" width="100%">
+<img src="https://facemoji.co/static/img/mocap4face/mocap4face.gif" width="100%">
 
 # 📋 Table of Content
 
