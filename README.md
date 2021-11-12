@@ -10,7 +10,7 @@ mocap4face by Facemoji is a free, multiplatform SDK for real-time facial motion 
 
 After fetching the input from one of the mentioned sources, mocap4face SDK produces data in [ARKit-compatible](https://developer.apple.com/documentation/arkit/arfaceanchor/blendshapelocation) blendshapes, i.e., [morph targets](https://en.wikipedia.org/wiki/Morph_target_animation) weight values as a per-frame expression shown in the video below. Useful for, e.g., animating a 2D or 3D avatar in a way that mimics the user's facial expressions in real-time à la Apple Memoji but without the need of a hardware-based TrueDepth Camera.
 
-With mocap4face, you can drive live avatars, build Snapchat-like lenses, AR experiences, face filters that trigger actions, VTubing apps, and more with as little energy impact and CPU/GPU use as possible. As an example, check out how the popular avatar live-streaming app [REALITY](https://apps.apple.com/us/app/reality/id1404176564?l=en&ls=1) is using our SDK.
+With mocap4face, you can drive live avatars, build Snapchat-like lenses, AR experiences, face filters that trigger actions, VTubing apps, and more with as little energy impact and CPU/GPU use as possible. As an example, check out how the popular avatar live-streaming app [REALITY](https://reality.app/) is using our SDK.
 
 Please ⭐ Star us on GitHub—it motivates us a lot!
 
