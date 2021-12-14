@@ -52,3 +52,6 @@ node_modules/
 .gradle
 .idea
 local.properties
+
+package-lock.json
+js-example/dist/

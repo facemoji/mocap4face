@@ -1,0 +1,913 @@
+@import url("https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500;700&family=Manrope:wght@400;700&display=swap");
+
+$font-sans: "Manrope", sans-serif;
+$font-mono: "JetBrains Mono", monospace;
+
+$black-8: rgba(0, 0, 0, 0.8);
+$black-3: rgba(0, 0, 0, 0.3);
+$black-1: rgba(0, 0, 0, 0.1);
+$black-05: rgba(0, 0, 0, 0.05);
+$white-8: rgba(255, 255, 255, 0.8);
+$white-3: rgba(255, 255, 255, 0.3);
+$white-1: rgba(255, 255, 255, 0.1);
+$white-05: rgba(255, 255, 255, 0.05);
+$white: #ffffff;
+$snow: #f7f7f7;
+$charcoal: #2e2e33;
+$turquoise: #00ffcc;
+$blue: #0073FF;
+
+$breakpoint-small: 32em; // 640px
+$breakpoint-medium: 48em; // 768px
+$breakpoint-large: 64em; // 1024px
+$breakpoint-xlarge: 80em; // 1280px
+
+$transition: 0.16s ease-in-out;
+$transform: scale3d(1.1,1.1,1.1);
+$shadow: 0px 12px 64px rgba(0, 0, 0, 0.12);
+
+@mixin font-smoothing {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+*,
+:after,
+:before {
+  box-sizing: border-box;
+}
+
+body,
+h1,
+h2,
+h3,
+h4,
+html,
+li,
+p,
+ul,
+input {
+  margin: 0;
+  padding: 0;
+}
+
+input,
+button {
+  border: 0;
+  outline: none;
+}
+
+body, html {
+  height: 100%;
+}
+
+body {
+  @include font-smoothing;
+  font-family: $font-sans;
+  letter-spacing: calc(-0.03058em + 0.44638px);
+  color: $black-8;
+  background: $turquoise;
+
+  @media only screen and (min-width: $breakpoint-medium) {
+    border-top: 0.25rem solid $turquoise;
+  }
+}
+
+a {
+  text-decoration: none;
+  transition: $transition;
+}
+
+p,
+li {
+  font-size: 14px;
+
+  @media only screen and (min-width: $breakpoint-xlarge) {
+    font-size: 1rem;
+    line-height: 1.5rem;
+  }
+}
+
+h1,
+h2 {
+  font-size: 24px;
+
+  @media only screen and (min-width: $breakpoint-medium) {
+    font-size: 28px;
+  }
+
+  @media only screen and (min-width: $breakpoint-xlarge) {
+    font-size: 36px;
+  }
+}
+
+h3 {
+  color: $black-3;
+  font-family: $font-mono;
+  font-size: 14px;
+  font-weight: normal;
+
+  @media only screen and (min-width: $breakpoint-large) {
+    font-size: 1rem;
+    line-height: 1.5rem;
+  }
+
+  a {
+    color: $black-8;
+
+    &:hover {
+      color: $black-3;
+    }
+  }
+}
+
+code,
+small,
+input,
+button,
+.footer li {
+  font-family: $font-mono;
+  font-size: 11px;
+  line-height: 14px;
+}
+
+ul {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  row-gap: 0.5rem;
+  list-style: none;
+}
+
+small {
+  color: $white-3;
+
+  a {
+    color: $white-3;
+
+    &:hover {
+      color: $white-8;
+    }
+  }
+}
+
+.container {
+  margin-left: auto;
+  margin-right: auto;
+  padding: 4rem 0;
+
+  @media only screen and (min-width: $breakpoint-small) {
+    width: 100%;
+    max-width: 32em;
+  }
+
+  @media only screen and (min-width: $breakpoint-medium) {
+    max-width: 48em;
+    padding: 4rem 2rem;
+  }
+
+  @media only screen and (min-width: $breakpoint-large) {
+    max-width: 64em;
+  }
+
+  @media only screen and (min-width: $breakpoint-xlarge) {
+    max-width: 80em;
+    padding: 8rem 4rem;
+  }
+}
+
+.main {
+  background: $white;
+}
+
+.row,
+.col {
+  display: flex;
+}
+
+.row {
+  flex-direction: column;
+
+  @media only screen and (min-width: $breakpoint-medium) {
+    padding: 0 4rem;
+    flex-direction: row;
+  }
+}
+
+.col {
+  width: 100%;
+  flex-direction: column;
+
+  @media only screen and (min-width: $breakpoint-medium) {
+    width: 50%;
+  }
+}
+
+.link {
+  display: inline-flex;
+  align-items: center;
+  column-gap: 0.5rem;
+
+  svg {
+    transition: $transition;
+  }
+
+  &.icon {
+
+    svg {
+      fill: $black-8;
+    }
+
+    &:hover {
+      svg {
+        fill: $black-3;
+      }
+    }
+  }
+
+  &.dimmed {
+    color: $black-3;
+
+    svg {
+      fill: $black-3;
+    }
+
+    &:hover {
+      color: $black-8;
+
+      svg {
+        fill: $black-8;
+      }
+    }
+  }
+}
+
+.button,
+.input {
+  padding: 1rem 2rem;
+  border-radius: 2rem;
+  transition: $transition;
+}
+
+.button {
+  background: $turquoise;
+  color: $black-8;
+  font-weight: bold;
+  cursor: pointer;
+
+  &:hover {
+    transform-origin: center;
+    transform: $transform;
+  }
+
+  &.primary {
+    background: $charcoal;
+    color: $white;
+    box-shadow: $shadow;
+  }
+
+  &.ghost {
+    background: transparent;
+  }
+
+  &.icon {
+    background: $white;
+    box-shadow: $shadow;
+    padding: 1rem;
+
+    svg {
+      fill: $black-8;
+      display: block;
+    }
+  }
+}
+
+.input {
+  width: 100%;
+  background: $white;
+  color: $black-8;
+
+  &::placeholder {
+    color: $black-3;
+  }
+
+  @media only screen and (min-width: $breakpoint-medium) {
+    background: $white-1;
+
+    &:hover {
+      background: $white-05;
+    }
+
+    &::placeholder {
+      color: $white-3;
+    }
+
+    &:focus-within {
+      background: $white;
+
+      input {
+        color: $black-8;
+
+        &::placeholder {
+          color: $white-3;
+        }
+
+        &:focus {
+          color: $black-8;
+
+          &::placeholder {
+            color: $black-3;
+          }
+        }
+      }
+    }
+  }
+}
+
+.github {
+  font-weight: bold;
+  color: $black-8;
+  align-self: baseline;
+
+  svg {
+    fill: $black-8;
+  }
+
+  &:hover {
+    transform: $transform;
+  }
+}
+
+.header {
+  row-gap: 2rem;
+  padding: 0 2rem;
+
+  @media only screen and (min-width: $breakpoint-medium) {
+    padding: 0 2rem;
+    column-gap: 4rem;
+  }
+
+  @media only screen and (min-width: $breakpoint-xlarge) {
+    padding: 0 4rem;
+    column-gap: 8rem;
+  }
+
+  .title {
+    flex-direction: column;
+  }
+
+  .description {
+    row-gap: 2rem;
+
+    h2,
+    .github {
+      font-size: 1rem;
+
+      @media only screen and (min-width: $breakpoint-xlarge) {
+        font-size: 20px;
+      }
+    }
+  }
+}
+
+.demo {
+  overflow: hidden;
+  transform: translateZ(0); // Safari border radius hack
+  margin: 4rem 0 2rem 0;
+  background: $white;
+  color: $black-8;
+  padding: 0;
+  box-shadow: $shadow;
+
+  @media only screen and (min-width: $breakpoint-medium) {
+    border-radius: 2rem;
+    margin: 4rem 0;
+  }
+
+  @media only screen and (min-width: $breakpoint-xlarge) {
+    margin: 8rem 0;
+  }
+
+  .source {
+    overflow: hidden;
+    position: relative;
+    padding: 0;
+    background: $charcoal;
+    align-items: center;
+
+    &.loading {
+      @media only screen and (max-width: $breakpoint-small) {
+        &.video {
+          height: calc(100vw / 1.333);
+        }
+
+        &.webcam {
+          height: calc(100vw / 1.777);
+        }
+      }
+    }
+
+    video {
+      width: 100%;
+
+      &.ratio_4_3 {
+        @media only screen and (min-width: $breakpoint-medium) {
+          min-width: calc(24.5rem * 1.333);
+          height: 24.5rem;
+        }
+
+        @media only screen and (min-width: $breakpoint-xlarge) {
+          min-width: calc(28.5rem * 1.333);
+          height: 28.5rem;
+        }
+      }
+
+      &.ratio_16_9 {
+        @media only screen and (min-width: $breakpoint-medium) {
+          min-width: calc(24.5rem * 1.777);
+          height: 24.5rem;
+        }
+
+        @media only screen and (min-width: $breakpoint-xlarge) {
+          min-width: calc(28.5rem * 1.777);
+          height: 28.5rem;
+        }
+      }
+    }
+
+    .overlay {
+      left: 0;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      position: absolute;
+      z-index: 2;
+
+      .icon,
+      .status {
+        position: absolute;
+        bottom: 2rem;
+        left: 2rem;
+      }
+
+      .icon {
+        &:hover {
+          transform: $transition;
+        }
+
+        &.disable_webcam {
+          .on {
+            display: none;
+          }
+        }
+
+        &:not(.disable_webcam) {
+          .off {
+            display: none;
+          }
+        }
+      }
+
+      .rect {
+        position: absolute;
+        width: 6rem;
+        height: 6rem;
+        display: block;
+        background-image: url("data:image/svg+xml,%3Csvg width='128' height='128' viewBox='0 0 128 128' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M96 2.56H107.52C117.417 2.56 125.44 10.5831 125.44 20.48V32H128V20.48C128 9.16921 118.831 0 107.52 0H96V2.56Z' fill='%23FFED04'/%3E%3Cpath d='M32 2.56V0H20.48C9.16921 0 0 9.16921 0 20.48V32H2.56V20.48C2.56 10.5831 10.5831 2.56 20.48 2.56H32Z' fill='%23FFED04'/%3E%3Cpath d='M2.56 96H0V107.52C0 118.831 9.16921 128 20.48 128H32V125.44H20.48C10.5831 125.44 2.56 117.417 2.56 107.52V96Z' fill='%23FFED04'/%3E%3Cpath d='M96 125.44V128H107.52C118.831 128 128 118.831 128 107.52V96H125.44V107.52C125.44 117.417 117.417 125.44 107.52 125.44H96Z' fill='%23FFED04'/%3E%3C/svg%3E%0A");
+        background-size: contain;
+        background-repeat: no-repeat;
+      }
+
+      .status {
+        color: $white;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translateX(-50%) translateY(-50%);
+        height: 1rem;
+        line-height: 1rem;
+        text-shadow: 0px 4px 16px rgba(0, 0, 0, 0.32);
+
+        &.loading {
+          span {
+            &:nth-child(2) {
+              display: none;
+            }
+          }
+        }
+
+        &:not(.loading) {
+          span {
+            &:nth-child(1) {
+              display: none;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .blendshapes {
+    padding: 2rem 0 2rem 2rem;
+    min-height: 24rem;
+
+    @media only screen and (min-width: $breakpoint-medium) {
+      min-height: 20.5rem;
+    }
+
+    @media only screen and (min-width: $breakpoint-xlarge) {
+      padding: 4rem 0 4rem 4rem;
+    }
+
+    ul {
+      max-height: 24rem;
+      overflow-y: scroll;
+      padding-right: 2rem;
+
+      @media only screen and (min-width: $breakpoint-medium) {
+        max-height: 20.5rem;
+        padding-right: 2rem;
+      }
+
+      @media only screen and (min-width: $breakpoint-xlarge) {
+        padding-right: 4rem;
+      }
+
+      li {
+        display: grid;
+        grid-template-columns: 6rem 1fr;
+        grid-template-rows: 1fr;
+        grid-column-gap: 2rem;
+        grid-row-gap: 0.5rem;
+        align-items: center;
+        position: relative;
+
+        code {
+          line-height: 16px;
+          text-overflow: ellipsis;
+          overflow: hidden;
+          white-space: nowrap;
+        }
+
+        .value {
+          height: 0.25rem;
+          background: $turquoise;
+          position: relative;
+          border-radius: 0.25rem;
+          position: relative;
+          z-index: 1;
+        }
+
+        &::after {
+          content: '';
+          border-radius: 0.25rem;
+          height: 4px;
+          position: absolute;
+          left: 8rem;
+          top: 50%;
+          right: 0;
+          transform: translateY(-50%);
+          background: $snow;
+          z-index: 0;
+        }
+      }
+
+      &.loading {
+        overflow: hidden;
+
+        code {
+          color: transparent;
+          border-radius: 3px;
+        }
+
+        .value {
+          display: none;
+        }
+
+        code,
+        li::after {
+          background-color: $black-05;
+        }
+      }
+    }
+  }
+}
+
+.info {
+  padding: 2rem 2rem 0 2rem;
+  row-gap: 4rem;
+
+  @media only screen and (min-width: $breakpoint-medium) {
+    padding: 0 2rem;
+    row-gap: 0;
+    column-gap: 4rem;
+  }
+
+  @media only screen and (min-width: $breakpoint-xlarge) {
+    padding: 0 4rem;
+    column-gap: 8rem;
+  }
+
+  .faq,
+  .specs {
+    row-gap: 2rem;
+
+    @media only screen and (min-width: $breakpoint-medium) {
+      row-gap: 2rem;
+    }
+
+    @media only screen and (min-width: $breakpoint-xlarge) {
+      row-gap: 4rem;
+    }
+  }
+
+  .faq {
+    ul {
+      row-gap: 1rem;
+
+      li {
+        display: flex;
+        flex-direction: column;
+        row-gap: 0.5rem;
+
+        a {
+          color: $black-8;
+          border-bottom: 1px solid $black-3;
+
+          &:hover {
+            border-bottom: 1px solid transparent;
+          }
+        }
+      }
+    }
+  }
+
+  .specs {
+    ul {
+      row-gap: 0;
+
+      li {
+        &:first-child {
+          margin-bottom: 0.5rem;
+        }
+      }
+    }
+
+    .list {
+      display: flex;
+      flex-direction: column;
+      row-gap: 1rem;
+
+      ul {
+        :not(:first-child) {
+          list-style-type: "•";
+          padding-inline-start: 1ch;
+          margin-left: 0.5rem;
+        }
+      }
+
+      @media only screen and (min-width: $breakpoint-medium) {
+        row-gap: 2rem;
+      }
+
+      code {
+        background: $snow;
+        padding: 2px 4px;
+        border-radius: 4px;
+      }
+    }
+  }
+}
+
+.alter {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  flex-direction: column;
+
+  h1 {
+    font-size: 2rem;
+    line-height: 42px;
+    padding: 4rem 0 2rem 0;
+
+    @media only screen and (min-width: $breakpoint-medium) {
+      font-size: 4rem;
+      line-height: 5rem;
+      padding: 8rem 8rem 4rem 8rem;
+    }
+  }
+
+  .cta {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 2rem;
+
+    @media only screen and (min-width: $breakpoint-medium) {
+      column-gap: 1rem;
+      margin-bottom: 0;
+    }
+  }
+
+  .hero {
+    display: flex;
+    width: 100%;
+
+    picture {
+      img {
+        max-width: 100%;
+        vertical-align: middle;
+      }
+    }
+  }
+}
+
+.footer {
+  background: $charcoal;
+  color: $white-8;
+  font-family: $font-mono;
+
+  @media only screen and (min-width: $breakpoint-medium) {
+    border-bottom: 0.25rem solid $turquoise;
+  }
+
+  ul {
+    li {
+      font-weight: bold;
+
+      a {
+        color: $white-3;
+        font-weight: normal;
+
+        &:hover {
+          color: $white-8;
+        }
+      }
+    }
+  }
+
+  .row {
+    padding: 0 2rem;
+    row-gap: 4rem;
+    text-align: center;
+
+    @media only screen and (min-width: $breakpoint-medium) {
+      padding: 0;
+      row-gap: 0;
+      text-align: left;
+    }
+  }
+
+  .container {
+    display: flex;
+    flex-direction: column;
+    row-gap: 2rem;
+
+    @media only screen and (min-width: $breakpoint-medium) {
+      row-gap: 4rem;
+      padding: 4rem;
+    }
+  }
+
+  .links {
+    flex-direction: column;
+    text-align: center;
+    justify-content: center;
+    row-gap: 2rem;
+
+    @media only screen and (min-width: $breakpoint-medium) {
+      flex-direction: row;
+      row-gap: 0;
+      text-align: left;
+      justify-content: flex-start;
+    }
+  }
+
+  .form {
+    row-gap: 1rem;
+    width: 100%;
+
+    @media only screen and (min-width: $breakpoint-small) {
+      width: 69%;
+    }
+
+    @media only screen and (min-width: $breakpoint-large) {
+      width: 50%;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      row-gap: 1rem;
+
+      @media only screen and (min-width: $breakpoint-medium) {
+        row-gap: 0;
+        column-gap: 1rem;
+        flex-direction: row;
+      }
+
+      input {
+        display: flex;
+        height: 1rem;
+        background: transparent;
+        width: 100%;
+        color: $white-8;
+      }
+    }
+
+    small {
+      text-align: center;
+    }
+  }
+}
+
+// Example styles
+
+.container {
+  margin-left: auto;
+  margin-right: auto;
+  padding: 4rem 0;
+
+  @media only screen and (min-width: $breakpoint-small) {
+    width: 100%;
+    max-width: 32em;
+  }
+
+  @media only screen and (min-width: $breakpoint-medium) {
+    max-width: 48em;
+    padding: 4rem 2rem;
+  }
+
+  @media only screen and (min-width: $breakpoint-large) {
+    max-width: 64em;
+  }
+
+  @media only screen and (min-width: $breakpoint-xlarge) {
+    max-width: 80em;
+    padding: 8rem 4rem;
+  }
+}
+
+.example {
+  padding: 0;
+  background: $white;
+
+  .main {
+    @media only screen and (min-width: $breakpoint-small) {
+      display: flex;
+      height: 100%;
+      align-items: center;
+    }
+  }
+
+  .container {
+    padding: 2rem 0;
+    display: flex;
+    flex-direction: column;
+    row-gap: 2rem;
+
+    .blendshapes {
+      ul {
+        max-height: inherit;
+      }
+    }
+
+    .header,
+    .description {
+      padding: 0;
+      justify-content: center;
+
+      .col {
+        width: auto;
+        text-align: center;
+      }
+    }
+
+    @media only screen and (min-width: $breakpoint-medium) {
+      padding: 2rem;
+
+      .blendshapes {
+        ul {
+          max-height: 20.5rem;
+        }
+      }
+    }
+
+    @media only screen and (min-width: $breakpoint-large) {
+      padding: 4rem;
+    }
+
+    .demo {
+      margin: 0;
+    }
+
+    .github {
+      align-self: center;
+    }
+  }
+}
+
+.hidden {
+  display: none !important;
+}

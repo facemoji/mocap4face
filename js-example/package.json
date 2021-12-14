@@ -1,0 +1,30 @@
+{
+  "name": "mocap4face-demo",
+  "version": "0.0.1",
+  "description": "Example application for mocap4face library",
+  "main": "index.js",
+  "scripts": {
+    "dev": "webpack serve --host 0.0.0.0 --config webpack.config.dev.js",
+    "dev_https": "webpack serve --https --host 0.0.0.0 --config webpack.config.dev.js",
+    "build": "webpack --config webpack.config.prod.js"
+  },
+  "author": "Facemoji",
+  "license": "ISC",
+  "dependencies": {
+    "@facemoji/mocap4face": "^0.2.0"
+  },
+  "devDependencies": {
+    "clean-webpack-plugin": "^4.0.0",
+    "copy-webpack-plugin": "^10.0.0",
+    "css-loader": "^6.5.1",
+    "html-webpack-plugin": "^5.5.0",
+    "mini-css-extract-plugin": "^2.4.5",
+    "node-sass": "^7.0.0",
+    "sass-loader": "^12.4.0",
+    "ts-loader": "^9.2.6",
+    "typescript": "^4.5.2",
+    "webpack": "^5.64.4",
+    "webpack-cli": "^4.9.1",
+    "webpack-dev-server": "^4.6.0"
+  }
+}

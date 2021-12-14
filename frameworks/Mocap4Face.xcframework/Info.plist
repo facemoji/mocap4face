@@ -5,22 +5,6 @@
 	<key>AvailableLibraries</key>
 	<array>
 		<dict>
-			<key>DebugSymbolsPath</key>
-			<string>dSYMs</string>
-			<key>LibraryIdentifier</key>
-			<string>ios-x86_64-simulator</string>
-			<key>LibraryPath</key>
-			<string>Mocap4Face.framework</string>
-			<key>SupportedArchitectures</key>
-			<array>
-				<string>x86_64</string>
-			</array>
-			<key>SupportedPlatform</key>
-			<string>ios</string>
-			<key>SupportedPlatformVariant</key>
-			<string>simulator</string>
-		</dict>
-		<dict>
 			<key>BitcodeSymbolMapsPath</key>
 			<string>BCSymbolMaps</string>
 			<key>DebugSymbolsPath</key>
@@ -35,6 +19,22 @@
 			</array>
 			<key>SupportedPlatform</key>
 			<string>ios</string>
+		</dict>
+		<dict>
+			<key>DebugSymbolsPath</key>
+			<string>dSYMs</string>
+			<key>LibraryIdentifier</key>
+			<string>ios-x86_64-simulator</string>
+			<key>LibraryPath</key>
+			<string>Mocap4Face.framework</string>
+			<key>SupportedArchitectures</key>
+			<array>
+				<string>x86_64</string>
+			</array>
+			<key>SupportedPlatform</key>
+			<string>ios</string>
+			<key>SupportedPlatformVariant</key>
+			<string>simulator</string>
 		</dict>
 	</array>
 	<key>CFBundlePackageType</key>

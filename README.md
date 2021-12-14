@@ -91,6 +91,18 @@ allprojects {
 
 3. To use the SDK in your project, add `implementation 'co.facemoji:mocap4face:0.1.0'` to your Gradle dependencies
 
+### Web
+
+1. Open the sample project under js-example in an editor of your choice
+2. Run `npm install && npm run dev` to start a local server with the demo
+3. Run `npm install && npm run dev_https` to start a local server with self-signed HTTPS support
+4. Run `npm install @facemoji/mocap4face` in your own project to add mocap4face as a dependency
+
+If the webcamera button is not working, you might need to use HTTPS for the local dev server.
+Run `npm run dev_https` and allow the self-signed certificate in the browser to start the demo in HTTPS mode.
+
+You can also run `npm run build` to create a production bundle of the demo app.
+
 # 🚀 Use Cases
 
 - Live avatar experiences
