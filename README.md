@@ -131,7 +131,8 @@ You can also run `npm run build` to create a production bundle of the demo app.
 
 # 📄 License
 
-This library is provided under the Facemoji SDK License Agreement—see [LICENSE](LICENSE.md).
+This library is provided under the Facemoji SDK License Agreement—see [LICENSE](LICENSE.md). Also make sure to check out
+our [FAQ](https://studio.facemoji.co/docs/FAQ_6b345137-5916-4017-b444-9d15398c8af0) for more details.
 
 The sample code in this repository is provided under the [Facemoji Samples License](ios-example/LICENSE.md)
 
