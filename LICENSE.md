@@ -1,19 +1,19 @@
-# Facemoji SDK License Agreement
-Effective date: September 21, 2021
+# Alter SDK License Agreement
+Effective date: February 1, 2022
 Version 1.0
 
-This Facemoji SDK License Agreement, ("Agreement"), is a binding
+This Alter SDK License Agreement, ("Agreement"), is a binding
 agreement between you and Omnipresence Inc., a Delaware corporation
-and its affiliates (collectively “Facemoji”, “we” or “us”) governing
-your use of our Facemoji SDK Development Kit. Facemoji SDK
-Development Kit means any SDK, including our Facemoji SDK, I/O SDK
+and its affiliates (collectively “Alter”, “we” or “us”) governing
+your use of our Alter SDK Development Kit. Alter SDK
+Development Kit means any SDK, including our Alter SDK, I/O SDK
 andbany application programming interfaces, plugins, code, technology,
 tools documentation, specification and content made available by us
 to others (collectively, the “SDK”).
 
-The SDK and other products offered by Facemoji are considered
+The SDK and other products offered by Alter are considered
 intellectual property, as defined below and marked as assets
-of Facemoji (“Assets”). If you, as a third party (“Provider”)
+of Alter (“Assets”). If you, as a third party (“Provider”)
 through your Application, as defined below, offer and distribute
 Assets  and an end-user (“End-User”) acquires a license to an Asset
 from us, this License Agreement shall apply regardless of whether
@@ -22,9 +22,9 @@ the asset is produced by us or by you, as a Provider and licensor.
 Your use is expressly conditioned on your acceptance of the Agreement
 contained herein and confirmation that you comply with the terms by
 clicking the “Accept” button below. By accepting, you are agreeing with
-other applicable terms and conditions of the Facemoji Studio, our Terms
+other applicable terms and conditions of the Alter Studio, our Terms
 of Service and acknowledging our Privacy Policy. This Agreement, the
-Terms of Service, the terms of Facemoji Studio and the Privacy Policy are
+Terms of Service, the terms of Alter Studio and the Privacy Policy are
 (collectively, the “Terms”). The SDK is protected by copyright laws and
 international copyright treaties, as well as other intellectual property
 laws and treaties. The SDK is licensed (not sold).
@@ -35,13 +35,13 @@ Subject to these Terms, you are granted a limited, royalty-free,
 non-exclusive, non-transferable, non-sublicensable, worldwide, revocable
 right and license to use and reproduce the SDK solely to develop,
 test or distribute your Application (defined below) and to enable you
-and/or your end user access to Facemoji features, including but not
+and/or your end user access to Alter features, including but not
 limited to, facial tracking technology and user created avatars through
 your Application.
 
 The license granted is solely for the purpose of testing, developing
 and promoting your applications, content, games, demos or other products
-and features (“Application’) and providing end users access to Facemoji
+and features (“Application’) and providing end users access to Alter
 features and services through your Application.
 
 The SDK may include sample source code, libraries or other materials
@@ -51,35 +51,35 @@ documentation will indicate such use and you may incorporate,
 reproduce and distribute them as part of your Application.
 
 You may, but is under no obligation to, provide access to the relevant
-usage statistics so that Facemoji can perform an audit to optimize the
+usage statistics so that Alter can perform an audit to optimize the
 actual implementation of the SDK into the Applications in real-time
 through third party analytics applications, including but not limited to,
 Amplitude.com. In addition, you may, but are under no obligation to,
-allow Facemoji access to the pre-release versions of the Applications
+allow Alter access to the pre-release versions of the Applications
 through third party applications.
 
 ## End User License
- 
+
 If an End User acquires a licence to an Asset that is distributed by you,
 as a Provider, then you shall be considered as the seller of the license
 to such Asset.  In such a case, only you, as the Provider (as opposed to
-Facemoji), shall be responsible for any liability under any End User
+Alter), shall be responsible for any liability under any End User
 license agreement or any breach by the Provider. End Users may use the
 licensed Assets only for their intended purpose and only under the same
 or more restrictive conditions than applicable under this Agreement.
 
-## Facemoji Studio
+## Alter Studio
 
-As part of this Agreement, you are granted access to Facemoji Studio
+As part of this Agreement, you are granted access to Alter Studio
 where you can manage your integrations, payments and interactions with us.
 Specific payment terms and final user in-app purchase rules
-of Facemoji Studio, which may change from time to time, are incorporated
+of Alter Studio, which may change from time to time, are incorporated
 herein by reference. We reserve the right to terminate your Studio
 account at any time.
 
 ## Intellectual property rights
 
-You understand and agree that Facemoji and its suppliers retain all
+You understand and agree that Alter and its suppliers retain all
 legal rights, title and interest (to include but not limited to patent,
 copyright, trademark, trade secret and moral rights) globally to any
 intellectual property included in the SDK, including, without limitation,
@@ -99,44 +99,44 @@ containing SDK viruses or other computer code, files or programs designed
 to interrupt, destroy, or limit the functionality of any SDK or hardware;
 
 (d) using the SDK or your Application in any way that violates the rights
-of Facemoji or third parties or applicable laws governing import,
+of Alter or third parties or applicable laws governing import,
 export and privacy;
 
 (e) using or distributing the SDK in any manner that would cause
-the SDK  or any part thereof, or Facemoji, to become subject to the terms
+the SDK  or any part thereof, or Alter, to become subject to the terms
 of any open source license or any other restriction. In addition,
 you may not represent that the Applications are certified or otherwise
-endorsed by Facemoji, and you may not use the Facemoji name
-or any other trademarks or service marks of Facemoji in connection
+endorsed by Alter, and you may not use the Alter name
+or any other trademarks or service marks of Alter in connection
 with the Applications.
 
 ## Feedback
 
-You, but not your users, may provide Facemoji with feedback on the SDK
+You, but not your users, may provide Alter with feedback on the SDK
 including, without limitation, feedback on bugs and faults within
 or relating to the SDK, or suggestions for improvements or other changes
-to all or any portion of the SDK. You agree that Facemoji shall own
+to all or any portion of the SDK. You agree that Alter shall own
 all feedback, ideas, concepts and changes to any portion of the SDK
 developed or identified in the course of or as a result of your use
 of the SDK and all associated intellectual property rights
-(“Feedback Results”), and you hereby assign to Facemoji all of your right,
+(“Feedback Results”), and you hereby assign to Alter all of your right,
 title and interest thereto. You will not knowingly provide Feedback
 Results that are subject to third party intellectual property rights.
 You agree to cooperate fully and to ensure that your employees, officers,
-independent contractors cooperate fully with Facemoji with respect
+independent contractors cooperate fully with Alter with respect
 to signing further documents and doing such other acts as are reasonably
-requested by Facemoji to confirm that Facemoji owns the Feedback Results,
-and to enable Facemoji to register and/or protect any associated
+requested by Alter to confirm that Alter owns the Feedback Results,
+and to enable Alter to register and/or protect any associated
 intellectual property rights and/or confidential information.
 
 ## Confidentiality
 
 Our communication with you and the SDK may contain confidential
-and proprietary information of Facemoji which includes information
+and proprietary information of Alter which includes information
 that is marked confidential or that would normally be considered
 confidential under the circumstances (“Confidential Information”).
 
-Confidential Information does not include information: 
+Confidential Information does not include information:
 
 (a) that is or becomes public knowledge or is received by either party
 without any breach of any confidentiality obligation;
@@ -151,17 +151,17 @@ You agree not to disclose any Confidential Information you may receive
 to any third party without our prior written consent. You agree that
 any unauthorized disclosure of the Confidential Information would cause
 irreparable harm and that in the event of any breach or threatened
-breach of the above confidentiality obligations, Facemoji shall be
+breach of the above confidentiality obligations, Alter shall be
 entitled to obtain equitable relief in addition to any other remedy.
 
 ## Support
 
-Facemoji may, but is under no obligation to provide any support for the SDK.
+Alter may, but is under no obligation to provide any support for the SDK.
 
 ## Privacy
 
 You represent and warrant that you have provided clear notice to users
-regarding data processing that includes third parties and Facemoji
+regarding data processing that includes third parties and Alter
 and its affiliates, who may collect or receive information from your
 Application. You agree to comply with all applicable privacy and data
 protection laws as well as our applicable Privacy Policy which constitutes
@@ -174,11 +174,11 @@ when you download or use the SDK or any part of it and will continue
 until terminated as set out in the Agreement. The Confidentiality,
 Indemnification, Warranty Disclaimer, Limitation of Liability,
 and Miscellaneous sections set out in this Agreement shall survive
-any termination of this Agreement. Facemoji may terminate this Agreement
+any termination of this Agreement. Alter may terminate this Agreement
 or suspend the SDK or any portion or feature or your access thereto if
 you breach any material provision of this Agreement or the Terms without
 liability to you or any obligation to you. In the event that the SDK
-is discontinued or Facemoji ceases to exist, this Agreement and the SDK,
+is discontinued or Alter ceases to exist, this Agreement and the SDK,
 including any backend infrastructure and support, will terminate
 automatically and without notice to you.
 
@@ -190,9 +190,9 @@ with the SDK.
 
 ## WARRANTY DISCLAIMER
 
-FACEMOJI DISCLAIMS ALL REPRESENTATIONS OR WARRANTIES OF ANY KIND,
+Alter DISCLAIMS ALL REPRESENTATIONS OR WARRANTIES OF ANY KIND,
 EITHER EXPRESS OR IMPLIED, REGARDING THE USE OF THE SDK TO THE MAXIMUM
-EXTENT PERMITTED BY APPLICABLE LAW, INCLUDING BUT NOT LIMITED TO 
+EXTENT PERMITTED BY APPLICABLE LAW, INCLUDING BUT NOT LIMITED TO
 WARRANTIES OF TITLE, MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE,
 OR NONINFRINGEMENT OR WARRANTIES THAT THE SDK WILL BE ACCURATE,
 FREE OF ERRORS OR DEFECTS, FREE OF VIRUSES OR CONTAMINATION,
@@ -203,27 +203,27 @@ USE OF THE SDK. YOU ASSUME THE ENTIRE COST OF ANY DAMAGE RESULTING
 FROM THE INFORMATION CONTAINED IN OR COMPILED BY THE SDK. YOU ASSUME
 ALL RESPONSIBILITIES FOR SELECTION OF THE SDK TO ACHIEVE
 YOUR INTENDED RESULTS, AND FOR THE INSTALLATION OF, USE OF,
-AND RESULTS OBTAINED FROM THE SDK. YOUR SOLE REMEDY AGAINST FACEMOJI
+AND RESULTS OBTAINED FROM THE SDK. YOUR SOLE REMEDY AGAINST Alter
 FOR DISSATISFACTION WITH THE SDK OR FOR ANY DAMAGE CAUSED THEREBY
 IS TO STOP USING SUCH SDK. THIS LIMITATION OF RELIEF IS A PART
 OF THE BARGAIN BETWEEN THE PARTIES.
 
 ## LIMITATION OF LIABILITY
 
-YOU AGREE NOT TO TAKE ANY LEGAL ACTION OR MAKE ANY CLAIM AGAINST FACEMOJI
+YOU AGREE NOT TO TAKE ANY LEGAL ACTION OR MAKE ANY CLAIM AGAINST Alter
 OR ANY OF ITS SUPPLIERS IN RELATION TO THE SDK AND/OR YOUR USAGE THEREOF.
 FURTHERMORE, YOU AGREE NOT TO SUPPORT ANY SUCH ACTIONS OR CLAIMS BY
 ANY OF YOUR CUSTOMERS WHO MAY RECEIVE THE SDK AS PART OF YOUR APPLICATIONS.
 
 YOU ACKNOWLEDGE AND AGREE THAT ANY USE OR DISSEMINATION BY YOU OF THE SDK
 IS YOUR SOLE RESPONSIBILITY AND AT YOUR OWN RISK. YOU ACKNOWLEDGE AND
-AGREE THAT FACEMOJI BEARS NO LIABILITY OR RESPONSIBILITY FOR SUCH USE
+AGREE THAT Alter BEARS NO LIABILITY OR RESPONSIBILITY FOR SUCH USE
 OR DISSEMINATION. AS SUCH, EXCEPT WHERE PROHIBITED BY LAW, IN NO EVENT
-WILL FACEMOJI BE LIABLE TO YOU FOR ANY DAMAGES OF ANY KIND, UNDER ANY
+WILL Alter BE LIABLE TO YOU FOR ANY DAMAGES OF ANY KIND, UNDER ANY
 LEGAL THEORY, TO INCLUDE DIRECT, INDIRECT, CONSEQUENTIAL, SPECIAL,
 EXEMPLARY, INCIDENTAL OR PUNITIVE DAMAGES, WHETHER RELATED TO BUSINESS
 INTERRUPTION/WORK STOPPAGE, LOST PROFITS, LOSS OF DATA, COMPUTER
-MALFUNCTION OR FAILURE OR OTHERWISE. EVEN IF FACEMOJI HAS BEEN ADVISED
+MALFUNCTION OR FAILURE OR OTHERWISE. EVEN IF Alter HAS BEEN ADVISED
 OF THE POSSIBILITY OF SUCH DAMAGES. IF YOU ARE A CALIFORNIA RESIDENT,
 YOU AGREE TO WAIVE CALIFORNIA CIVIL CODE SECTION 1542,
 WHICH STATES: “A GENERAL RELEASE DOES NOT EXTEND TO CLAIMS WHICH
@@ -237,7 +237,7 @@ OF ANY ESSENTIAL REMEDY.
 
 ## INDEMNITY
 
-YOU AGREE TO FULLY INDEMNIFY AND HOLD HARMLESS FACEMOJI, ITS DIRECTORS,
+YOU AGREE TO FULLY INDEMNIFY AND HOLD HARMLESS Alter, ITS DIRECTORS,
 OFFICERS AND EMPLOYEES, AGAINST ANY AND ALL CLAIMS, TO INCLUDE ATTORNEYS’
 FEES, MADE REGARDING (I) YOUR USE OF THE SDK, (II) ANY APPLICATION
 YOU DEVELOP THEREFROM AND THE USE OF SUCH APPLICATION BY ANY PERSON,
@@ -265,7 +265,7 @@ in the Southern  District of New York.
 
 No delay or failure to take action under this Agreement will constitute
 a waiver unless expressly waived in writing, signed by a duly authorized
-Facemoji representative, and no single waiver will constitute
+Alter representative, and no single waiver will constitute
 a continuing or subsequent waiver. If any provision is found to be
 unenforceable or invalid, that provision shall be limited or eliminated
 to the minimum extent necessary so that this Agreement shall otherwise
@@ -283,9 +283,9 @@ maximum extent permissible by law.
 
 ## Changes to the agreement
 
-Facemoji shall have the right to unilaterally change or add to the terms
+Alter shall have the right to unilaterally change or add to the terms
 of this Agreement at any time upon notice by any means.
-Facemoji determines in its discretion to be reasonable and may simply
+Alter determines in its discretion to be reasonable and may simply
 reference a posted, newly revised version of the Agreement on its website.
 It is your responsibility to review the most updated version thereof.
 
@@ -296,4 +296,4 @@ of the updates cannot be avoided by using an older release of the SDK.
 
 ***
 
-Copyright © 2021 Omnipresence, Inc.
+Copyright © 2022 Omnipresence, Inc.
