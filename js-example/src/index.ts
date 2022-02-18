@@ -8,7 +8,7 @@ import {
     Quaternion,
     ResourceFileSystem,
     Vec2,
-} from '@facemoji/mocap4face';
+} from '@0xalter/mocap4face';
 import './styles/main.scss';
 
 Logger.logLevel = LogLevel.Info; // Set LogLevel.Debug to increase logging verbosity when debugging

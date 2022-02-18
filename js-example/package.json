@@ -8,10 +8,10 @@
     "dev_https": "webpack serve --https --host 0.0.0.0 --config webpack.config.dev.js",
     "build": "webpack --config webpack.config.prod.js"
   },
-  "author": "Facemoji",
+  "author": "Alter",
   "license": "ISC",
   "dependencies": {
-    "@facemoji/mocap4face": "^0.2.0"
+    "@0xalter/mocap4face": "^0.3.0"
   },
   "devDependencies": {
     "clean-webpack-plugin": "^4.0.0",
