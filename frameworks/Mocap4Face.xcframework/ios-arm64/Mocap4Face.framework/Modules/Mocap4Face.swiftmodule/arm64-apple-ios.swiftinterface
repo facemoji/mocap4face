@@ -1,6 +1,7 @@
 // swift-interface-format-version: 1.0
-// swift-compiler-version: Apple Swift version 5.4.2 (swiftlang-1205.0.28.2 clang-1205.0.19.57)
+// swift-compiler-version: Apple Swift version 5.3.2 (swiftlang-1200.0.45 clang-1200.0.32.28)
 // swift-module-flags: -target arm64-apple-ios11.0 -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -Onone -module-name Mocap4Face
+import AVFoundation
 import CoreMedia
 import CoreVideo
 import Foundation
@@ -10,6 +11,35 @@ import MetalKit
 import Swift
 import UIKit
 import VideoToolbox
+@objc @_inheritsConvenienceInitializers public class CameraWrapper : ObjectiveC.NSObject {
+  public var automaticallyAdjustOrientation: Swift.Bool
+  @discardableResult
+  public func start(frontFacing: Swift.Bool = true) -> Mocap4Face.Future<Mocap4Face.Try<Swift.Void>>
+  public func addOnFrameListener(_ listener: @escaping (CoreMedia.CMSampleBuffer) -> Swift.Void)
+  public func changeOrientation(_ newOrientation: UIKit.UIDeviceOrientation = UIDevice.current.orientation)
+  public var imageOrientation: ImageIO.CGImagePropertyOrientation {
+    get
+  }
+  public var frameResolution: (Swift.Int, Swift.Int) {
+    get
+  }
+  public var paused: Swift.Bool {
+    get
+  }
+  public func toggleFlash()
+  @discardableResult
+  public func pause() -> Mocap4Face.Future<Swift.Void>
+  @discardableResult
+  public func resume() -> Mocap4Face.Future<Swift.Void>
+  @discardableResult
+  public func stop() -> Mocap4Face.Future<Mocap4Face.Try<Swift.Void>>
+  public func switchLowLight(lowLightOn: Swift.Bool)
+  @objc deinit
+  @objc override dynamic public init()
+}
+extension CameraWrapper : AVFoundation.AVCaptureVideoDataOutputSampleBufferDelegate {
+  @objc dynamic public func captureOutput(_ output: AVFoundation.AVCaptureOutput, didOutput sampleBuffer: CoreMedia.CMSampleBuffer, from connection: AVFoundation.AVCaptureConnection)
+}
 extension UIColor {
   public var rgbComponents: (red: CoreGraphics.CGFloat, green: CoreGraphics.CGFloat, blue: CoreGraphics.CGFloat, alpha: CoreGraphics.CGFloat) {
     get
@@ -54,8 +84,8 @@ extension Try {
     case rotate90Degrees
     case rotate180Degrees
     case rotate270Degrees
-    public init?(rawValue: Swift.Int)
     public typealias RawValue = Swift.Int
+    public init?(rawValue: Swift.Int)
     public var rawValue: Swift.Int {
       get
     }
@@ -93,7 +123,8 @@ public func numArrayOf(_ elements_: Mocap4Face.KotlinFloatArray) -> Mocap4Face.K
 public func numArrayOf(_ elements__: Mocap4Face.KotlinIntArray) -> Mocap4Face.KotlinFloatArray
 public func min<T>(_ a: T, _ b: T) -> T where T : Mocap4Face.Vec
 public func max<T>(_ a: T, _ b: T) -> T where T : Mocap4Face.Vec
-public func deserializeResult(_ data: Mocap4Face.KotlinByteArray) -> Mocap4Face.KotlinPair<Mocap4Face.FaceTrackerResult, Mocap4Face.KotlinByteArray?>
+@available(*, deprecated, renamed: "FaceTrackerResultDeserializer", message: "The standalone serialization functions are not future-proof, use the FaceTrackerSerializer and FaceTrackerDeserializer objects instead, they allow exchanging the serialization format too")
+public func deserializeResult(_ data: Mocap4Face.KotlinByteArray) -> Mocap4Face.DeserializedResult
 extension File {
   public func readLines() -> Mocap4Face.Future<Mocap4Face.Try<[Swift.String]>>
 }
@@ -119,6 +150,10 @@ extension FileSystem {
 }
 public func defaultBundle() -> Foundation.Bundle
 public func getTimeMillis() -> Swift.Int64
+public var ALTER_CORE_VERSION: Swift.String {
+  get
+}
+@available(*, deprecated, message: "Renamed to ALTER_CORE_VERSION")
 public var FACEMOJI_SDK_VERSION: Swift.String {
   get
 }
@@ -218,6 +253,7 @@ public protocol Vec {
   func invDiv(_ rhs_: Swift.Float) -> Self
   func sum() -> Swift.Float
   func length() -> Swift.Float
+  func lengthSquared() -> Swift.Float
   func min() -> Swift.Float
   func max() -> Swift.Float
   func dot(_ rhs: Self.T) -> Swift.Float
@@ -253,6 +289,7 @@ public protocol Vec {
   public func invDiv(_ rhs_: Swift.Float) -> Self
   public func sum() -> Swift.Float
   public func length() -> Swift.Float
+  public func lengthSquared() -> Swift.Float
   public func min() -> Swift.Float
   public func max() -> Swift.Float
   public func dot(_ rhs: Mocap4Face.VecWrapper.T) -> Swift.Float
@@ -265,7 +302,7 @@ public protocol Vec {
   public func floatArray() -> Mocap4Face.KotlinFloatArray
   @objc deinit
 }
-@_hasMissingDesignatedInitializers public class Vector : Mocap4Face.ConvertibleToKotlin, Swift.Hashable, Mocap4Face.Vec {
+@_hasMissingDesignatedInitializers public class Vector : Mocap4Face.ConvertibleToKotlin, Swift.Hashable, Swift.CustomStringConvertible, Swift.CustomDebugStringConvertible, Mocap4Face.Vec {
   public typealias T = Mocap4Face.Vector
   public var _wrappedVec: Swift.AnyObject {
     get
@@ -291,6 +328,7 @@ public protocol Vec {
   public func invDiv(_ rhs_: Swift.Float) -> Self
   public func sum() -> Swift.Float
   public func length() -> Swift.Float
+  public func lengthSquared() -> Swift.Float
   public func min() -> Swift.Float
   public func max() -> Swift.Float
   public func dot(_ rhs: Mocap4Face.Vector.T) -> Swift.Float
@@ -302,11 +340,16 @@ public protocol Vec {
   public func one() -> Self
   public func floatArray() -> Mocap4Face.KotlinFloatArray
   public func asList() -> [Swift.Float]
-  public func description() -> Swift.String
   public func vecMulMat<M>(_ mat: M) -> Self where M : Mocap4Face.Matrix
   public static func matMulVec<M, V>(_ mat: M, _ vec: V) -> V where M : Mocap4Face.Matrix, V : Mocap4Face.Vector
   public static func == (lhs: Mocap4Face.Vector, rhs: Mocap4Face.Vector) -> Swift.Bool
   public func hash(into hasher: inout Swift.Hasher)
+  public var description: Swift.String {
+    get
+  }
+  public var debugDescription: Swift.String {
+    get
+  }
   @objc deinit
   public var hashValue: Swift.Int {
     get
@@ -363,12 +406,43 @@ public protocol Vec {
   public static var BGR: Mocap4Face.KotlinIntArray {
     get
   }
+  public static var WHITE: Mocap4Face.Col {
+    get
+  }
+  public static var BLACK: Mocap4Face.Col {
+    get
+  }
+  public static var TRANSPARENT: Mocap4Face.Col {
+    get
+  }
+  public static var RED: Mocap4Face.Col {
+    get
+  }
+  public static var GREEN: Mocap4Face.Col {
+    get
+  }
+  public static var BLUE: Mocap4Face.Col {
+    get
+  }
+  public static var MAGENTA: Mocap4Face.Col {
+    get
+  }
+  public static var YELLOW: Mocap4Face.Col {
+    get
+  }
+  public static var CYAN: Mocap4Face.Col {
+    get
+  }
+  public static var GRAY: Mocap4Face.Col {
+    get
+  }
   public func withR(_ r: Swift.Float) -> Mocap4Face.Col
   public func withG(_ g: Swift.Float) -> Mocap4Face.Col
   public func withB(_ b: Swift.Float) -> Mocap4Face.Col
   public func withA(_ a: Swift.Float) -> Mocap4Face.Col
   public func toInt(_ channelMap: Mocap4Face.KotlinIntArray = RGBA) -> Swift.Int
   public func clamp() -> Mocap4Face.Col
+  public static func fromHex(_ hex: Swift.String) -> Mocap4Face.Try<Mocap4Face.Col>
   public static func == (lhs: Mocap4Face.Col, rhs: Mocap4Face.Col) -> Swift.Bool
   override public func hash(into hasher: inout Swift.Hasher)
   @objc deinit
@@ -395,7 +469,7 @@ extension MatrixLayout {
   @_hasMissingDesignatedInitializers public class RowMajorClass : Mocap4Face.MatrixLayout {
     required public convenience init(_ wrapped: Mocap4Face.KotlinObjectWrapper)
     override public func asKotlin() -> Swift.AnyObject
-    override public var transposed: Mocap4Face.MatrixLayout.ColumnMajorClass {
+    override public var transposed: Mocap4Face.MatrixLayout {
       get
     }
     public static func == (lhs: Mocap4Face.MatrixLayout.RowMajorClass, rhs: Mocap4Face.MatrixLayout.RowMajorClass) -> Swift.Bool
@@ -410,7 +484,7 @@ extension MatrixLayout {
   @_hasMissingDesignatedInitializers public class ColumnMajorClass : Mocap4Face.MatrixLayout {
     required public convenience init(_ wrapped: Mocap4Face.KotlinObjectWrapper)
     override public func asKotlin() -> Swift.AnyObject
-    override public var transposed: Mocap4Face.MatrixLayout.RowMajorClass {
+    override public var transposed: Mocap4Face.MatrixLayout {
       get
     }
     public static func == (lhs: Mocap4Face.MatrixLayout.ColumnMajorClass, rhs: Mocap4Face.MatrixLayout.ColumnMajorClass) -> Swift.Bool
@@ -443,6 +517,12 @@ extension MatrixLayout {
   public func inverse(_ default: Mocap4Face.Matrix.T) -> Self
   public static func == (lhs: Mocap4Face.Matrix, rhs: Mocap4Face.Matrix) -> Swift.Bool
   override public func hash(into hasher: inout Swift.Hasher)
+  override public var description: Swift.String {
+    get
+  }
+  override public var debugDescription: Swift.String {
+    get
+  }
   @objc deinit
 }
 @_hasMissingDesignatedInitializers public class Mat2 : Mocap4Face.Matrix {
@@ -701,6 +781,12 @@ extension MatrixLayout {
   public static func fromEuler(_ vec: Mocap4Face.Vec3) -> Mocap4Face.Quaternion
   public static func == (lhs: Mocap4Face.Quaternion, rhs: Mocap4Face.Quaternion) -> Swift.Bool
   override public func hash(into hasher: inout Swift.Hasher)
+  override public var description: Swift.String {
+    get
+  }
+  override public var debugDescription: Swift.String {
+    get
+  }
   @objc deinit
 }
 public protocol VecUnaryOperator {
@@ -962,6 +1048,7 @@ public protocol VecBinaryOperator {
   }
   public func flatMap<U>(_ mapper: @escaping (T) -> Mocap4Face.Try<U>) -> Mocap4Face.Try<U>
   public func map<U>(_ mapper: @escaping (T) -> U) -> Mocap4Face.Try<U>
+  public func mapError(_ mapper: @escaping (Mocap4Face.KotlinException) -> Mocap4Face.KotlinException) -> Mocap4Face.Try<T>
   public func `catch`(_ catcher: @escaping (Mocap4Face.KotlinException) -> T) -> T
   public func catchError(_ catcher: @escaping (Mocap4Face.TryError) -> T) -> T
   public func or(_ fn: @escaping (Mocap4Face.TryError) -> Mocap4Face.Try<T>) -> Mocap4Face.Try<T>
@@ -987,7 +1074,7 @@ public protocol VecBinaryOperator {
     get
   }
 }
-@_hasMissingDesignatedInitializers public class TryValue<T> : Mocap4Face.Try<T> {
+@_hasMissingDesignatedInitializers public class TryValue<T> : Mocap4Face.Try<T>, Swift.CustomStringConvertible, Swift.CustomDebugStringConvertible {
   required public convenience init(_ wrapped: Mocap4Face.KotlinObjectWrapper)
   override public func asKotlin() -> Swift.AnyObject
   public convenience init(_ value: T)
@@ -996,14 +1083,19 @@ public protocol VecBinaryOperator {
   }
   public func isEqual(_ other: Any?) -> Swift.Bool
   public func hash() -> Swift.UInt
-  public func description() -> Swift.String
   public func component1() -> T
   public func doCopy(_ value: T) -> Mocap4Face.TryValue<T>
   public static func == (lhs: Mocap4Face.TryValue<T>, rhs: Mocap4Face.TryValue<T>) -> Swift.Bool
   override public func hash(into hasher: inout Swift.Hasher)
+  public var description: Swift.String {
+    get
+  }
+  public var debugDescription: Swift.String {
+    get
+  }
   @objc deinit
 }
-@_hasMissingDesignatedInitializers public class TryError : Mocap4Face.Try<Swift.Never> {
+@_hasMissingDesignatedInitializers public class TryError : Mocap4Face.Try<Swift.Never>, Swift.CustomStringConvertible, Swift.CustomDebugStringConvertible {
   required public convenience init(_ wrapped: Mocap4Face.KotlinObjectWrapper)
   override public func asKotlin() -> Swift.AnyObject
   public convenience init(_ message: Swift.String)
@@ -1013,11 +1105,16 @@ public protocol VecBinaryOperator {
   }
   public func isEqual(_ other: Any?) -> Swift.Bool
   public func hash() -> Swift.UInt
-  public func description() -> Swift.String
   public func component1() -> Mocap4Face.KotlinException
   public func doCopy(_ error: Mocap4Face.KotlinException) -> Mocap4Face.TryError
   public static func == (lhs: Mocap4Face.TryError, rhs: Mocap4Face.TryError) -> Swift.Bool
   override public func hash(into hasher: inout Swift.Hasher)
+  public var description: Swift.String {
+    get
+  }
+  public var debugDescription: Swift.String {
+    get
+  }
   @objc deinit
 }
 @_hasMissingDesignatedInitializers public class FacemojiAPIClass : Mocap4Face.ConvertibleToKotlin, Swift.Hashable {
@@ -1040,8 +1137,8 @@ public protocol VecBinaryOperator {
 }
 public var FacemojiAPI: Mocap4Face.FacemojiAPIClass
 public enum LogLevel : Swift.CustomStringConvertible, Mocap4Face.ConvertibleToKotlin, Swift.CustomDebugStringConvertible {
-  case debug
   case `internal`
+  case debug
   case info
   case warning
   case error
@@ -1057,10 +1154,10 @@ public enum LogLevel : Swift.CustomStringConvertible, Mocap4Face.ConvertibleToKo
   public init(_ wrapped: Mocap4Face.KotlinObjectWrapper)
   public func asKotlin() -> Swift.AnyObject
   public static func == (a: Mocap4Face.LogLevel, b: Mocap4Face.LogLevel) -> Swift.Bool
-  public func hash(into hasher: inout Swift.Hasher)
   public var hashValue: Swift.Int {
     get
   }
+  public func hash(into hasher: inout Swift.Hasher)
 }
 @_hasMissingDesignatedInitializers public class Logger : Mocap4Face.ConvertibleToKotlin, Swift.Hashable {
   required public convenience init(_ wrapped: Mocap4Face.KotlinObjectWrapper)
@@ -1108,7 +1205,7 @@ public enum LogLevel : Swift.CustomStringConvertible, Mocap4Face.ConvertibleToKo
     get
   }
 }
-@_hasMissingDesignatedInitializers public class DispatchQueue : Mocap4Face.ConvertibleToKotlin, Swift.Hashable {
+@_hasMissingDesignatedInitializers public class DispatchQueue : Mocap4Face.ConvertibleToKotlin, Swift.Hashable, Swift.CustomStringConvertible, Swift.CustomDebugStringConvertible {
   required public convenience init(_ wrapped: Mocap4Face.KotlinObjectWrapper)
   public func asKotlin() -> Swift.AnyObject
   public convenience init(_ name: Swift.String)
@@ -1122,10 +1219,29 @@ public enum LogLevel : Swift.CustomStringConvertible, Mocap4Face.ConvertibleToKo
     get
   }
   public func queue(_ fn: @escaping () -> Swift.Void)
+  public func runOrQueue(_ fn: @escaping () -> Swift.Void)
   public func targetsThisThread() -> Swift.Bool?
   public static func createSingleThreaded(_ name: Swift.String) -> Mocap4Face.DispatchQueue
   public static func createSystemQueue(_ name: Swift.String) -> Mocap4Face.DispatchQueue
   public static func == (lhs: Mocap4Face.DispatchQueue, rhs: Mocap4Face.DispatchQueue) -> Swift.Bool
+  public func hash(into hasher: inout Swift.Hasher)
+  public var description: Swift.String {
+    get
+  }
+  public var debugDescription: Swift.String {
+    get
+  }
+  @objc deinit
+  public var hashValue: Swift.Int {
+    get
+  }
+}
+@_hasMissingDesignatedInitializers public class PeriodicExecutor : Mocap4Face.ConvertibleToKotlin, Swift.Hashable {
+  required public convenience init(_ wrapped: Mocap4Face.KotlinObjectWrapper)
+  public func asKotlin() -> Swift.AnyObject
+  public convenience init(_ intervalSeconds: Swift.Double, _ fn: @escaping () -> Swift.Void)
+  public func cancel()
+  public static func == (lhs: Mocap4Face.PeriodicExecutor, rhs: Mocap4Face.PeriodicExecutor) -> Swift.Bool
   public func hash(into hasher: inout Swift.Hasher)
   @objc deinit
   public var hashValue: Swift.Int {
@@ -1135,8 +1251,7 @@ public enum LogLevel : Swift.CustomStringConvertible, Mocap4Face.ConvertibleToKo
 @_hasMissingDesignatedInitializers public class Future<T> : Mocap4Face.ConvertibleToKotlin, Swift.Hashable {
   required public convenience init(_ wrapped: Mocap4Face.KotlinObjectWrapper)
   public func asKotlin() -> Swift.AnyObject
-  public convenience init(_ generator: @escaping (@escaping (T) -> Swift.Void) -> Swift.Void)
-  public convenience init(_ value: T)
+  public convenience init()
   public var resolved: Swift.Bool {
     get
   }
@@ -1149,21 +1264,28 @@ public enum LogLevel : Swift.CustomStringConvertible, Mocap4Face.ConvertibleToKo
   public func flatMap<U>(_ mapper: @escaping (T) -> Mocap4Face.Future<U>) -> Mocap4Face.Future<U>
   public func waitFor() -> T
   public func waitFor(_ timeoutMillis: Swift.Int) -> T?
+  @discardableResult
   public func logError<TExt>(_ prefix: Swift.String? = nil) -> Mocap4Face.Future<TExt?> where T : Mocap4Face.Try<TExt>
+  @discardableResult
   public func logWarning<TExt>(_ prefix: Swift.String? = nil) -> Mocap4Face.Future<TExt?> where T : Mocap4Face.Try<TExt>
+  @discardableResult
   public func logInfo<TExt>(_ prefix: Swift.String? = nil) -> Mocap4Face.Future<TExt?> where T : Mocap4Face.Try<TExt>
+  @discardableResult
   public func logDebug<TExt>(_ prefix: Swift.String? = nil) -> Mocap4Face.Future<TExt?> where T : Mocap4Face.Try<TExt>
   public func logInternal<TExt>(_ prefix: Swift.String? = nil) -> Mocap4Face.Future<TExt?> where T : Mocap4Face.Try<TExt>
   public func mapTry<TExt, U>(_ mapper: @escaping (TExt) -> U) -> Mocap4Face.Future<Mocap4Face.Try<U>> where T : Mocap4Face.Try<TExt>
   public func mapTryFlat<TExt, U>(_ mapper: @escaping (TExt) -> Mocap4Face.Try<U>) -> Mocap4Face.Future<Mocap4Face.Try<U>> where T : Mocap4Face.Try<TExt>
   public func flatMapTry<TExt, U>(_ mapper: @escaping (TExt) -> Mocap4Face.Future<Mocap4Face.Try<U>>) -> Mocap4Face.Future<Mocap4Face.Try<U>> where T : Mocap4Face.Try<TExt>
   public func flatMapTryFlat<U>(_ mapper: @escaping (T) -> Mocap4Face.Try<Mocap4Face.Future<U>>) -> Mocap4Face.Future<Mocap4Face.Try<U>>
+  public func mapError<TExt>(_ mapper: @escaping (Mocap4Face.KotlinException) -> Mocap4Face.KotlinException) -> Mocap4Face.Future<Mocap4Face.Try<TExt>> where T : Mocap4Face.Try<TExt>
   public func `catch`<TExt>(_ catcher: @escaping (Mocap4Face.KotlinException) -> TExt) -> Mocap4Face.Future<TExt> where T : Mocap4Face.Try<TExt>
   public func orTry<TExt>(_ fn: @escaping (Mocap4Face.TryError) -> Mocap4Face.Try<TExt>) -> Mocap4Face.Future<Mocap4Face.Try<TExt>> where T : Mocap4Face.Try<TExt>
   public func orTryFlat<TExt>(_ fn: @escaping (Mocap4Face.TryError) -> Mocap4Face.Future<Mocap4Face.Try<TExt>>) -> Mocap4Face.Future<Mocap4Face.Try<TExt>> where T : Mocap4Face.Try<TExt>
   public static func any<T>(_ futures: Mocap4Face.KotlinArray<Mocap4Face.Future<T>>) -> Mocap4Face.Future<T>
   public static func all<T>(_ futures: [Mocap4Face.Future<T>]) -> Mocap4Face.Future<[T]>
+  public static func resolved<T>(_ value: T) -> Mocap4Face.Future<T>
   public static func async<T>(_ fn: @escaping () -> T) -> Mocap4Face.Future<T>
+  public static func fromGenerator<T>(_ generator: @escaping (@escaping (T) -> Swift.Void) -> Swift.Void) -> Mocap4Face.Future<T>
   public static func == (lhs: Mocap4Face.Future<T>, rhs: Mocap4Face.Future<T>) -> Swift.Bool
   public func hash(into hasher: inout Swift.Hasher)
   @objc deinit
@@ -1232,10 +1354,10 @@ public enum FillMode : Swift.CustomStringConvertible, Mocap4Face.ConvertibleToKo
   public init(_ wrapped: Mocap4Face.KotlinObjectWrapper)
   public func asKotlin() -> Swift.AnyObject
   public static func == (a: Mocap4Face.FillMode, b: Mocap4Face.FillMode) -> Swift.Bool
-  public func hash(into hasher: inout Swift.Hasher)
   public var hashValue: Swift.Int {
     get
   }
+  public func hash(into hasher: inout Swift.Hasher)
 }
 public enum PixelComponents : Swift.CustomStringConvertible, Mocap4Face.ConvertibleToKotlin, Swift.CustomDebugStringConvertible {
   case r
@@ -1253,10 +1375,10 @@ public enum PixelComponents : Swift.CustomStringConvertible, Mocap4Face.Converti
   public init(_ wrapped: Mocap4Face.KotlinObjectWrapper)
   public func asKotlin() -> Swift.AnyObject
   public static func == (a: Mocap4Face.PixelComponents, b: Mocap4Face.PixelComponents) -> Swift.Bool
-  public func hash(into hasher: inout Swift.Hasher)
   public var hashValue: Swift.Int {
     get
   }
+  public func hash(into hasher: inout Swift.Hasher)
 }
 @_hasMissingDesignatedInitializers public class Image : Mocap4Face.ConvertibleToKotlin, Swift.Hashable {
   required public convenience init(_ wrapped: Mocap4Face.KotlinObjectWrapper)
@@ -1320,6 +1442,9 @@ extension Image {
   required public convenience init(_ wrapped: Mocap4Face.KotlinObjectWrapper)
   public func asKotlin() -> Swift.AnyObject
   public convenience init()
+  public var images: [Mocap4Face.Image] {
+    get
+  }
   public static func == (lhs: Mocap4Face.ImageList, rhs: Mocap4Face.ImageList) -> Swift.Bool
   public func hash(into hasher: inout Swift.Hasher)
   @objc deinit
@@ -1332,7 +1457,7 @@ extension ImageList {
     required public convenience init(_ wrapped: Mocap4Face.KotlinObjectWrapper)
     override public func asKotlin() -> Swift.AnyObject
     public convenience init(_ width: Swift.Int, _ height: Swift.Int, _ data: [Mocap4Face.KotlinIntArray])
-    public var images: [Mocap4Face.Image.RawInt] {
+    override public var images: [Mocap4Face.Image] {
       get
     }
     public static func == (lhs: Mocap4Face.ImageList.RawInt, rhs: Mocap4Face.ImageList.RawInt) -> Swift.Bool
@@ -1345,7 +1470,7 @@ extension ImageList {
     required public convenience init(_ wrapped: Mocap4Face.KotlinObjectWrapper)
     override public func asKotlin() -> Swift.AnyObject
     public convenience init(_ width: Swift.Int, _ height: Swift.Int, _ data: [Mocap4Face.KotlinFloatArray], _ pixelComponents: Mocap4Face.PixelComponents)
-    public var images: [Mocap4Face.Image.RawFloat] {
+    override public var images: [Mocap4Face.Image] {
       get
     }
     public static func == (lhs: Mocap4Face.ImageList.RawFloat, rhs: Mocap4Face.ImageList.RawFloat) -> Swift.Bool
@@ -1454,7 +1579,7 @@ extension ImageCube {
   override public func hash(into hasher: inout Swift.Hasher)
   @objc deinit
 }
-@_hasMissingDesignatedInitializers public class FaceTrackerResult : Mocap4Face.ConvertibleToKotlin {
+@_hasMissingDesignatedInitializers public class FaceTrackerResult : Mocap4Face.ConvertibleToKotlin, Swift.CustomStringConvertible, Swift.CustomDebugStringConvertible {
   required public convenience init(_ wrapped: Mocap4Face.KotlinObjectWrapper)
   public func asKotlin() -> Swift.AnyObject
   public convenience init(_ blendshapes: [Swift.String : Swift.Float], _ normalizedImagePosition: Mocap4Face.Vec2, _ normalizedImageScale: Swift.Float, _ rotationQuaternion: Mocap4Face.Quaternion, _ confidence: Swift.Float, _ inputImageSize: Mocap4Face.Vec2, _ faceRectangle: Mocap4Face.Rect, _ positionInCrop: Mocap4Face.Vec2, _ scaleInCrop: Swift.Float, _ debug: Any? = nil)
@@ -1489,7 +1614,6 @@ extension ImageCube {
   public func interpolate(_ other: Mocap4Face.FaceTrackerResult, _ t: Swift.Float) -> Mocap4Face.FaceTrackerResult
   public func isEqual(_ other: Any?) -> Swift.Bool
   public func hash() -> Swift.UInt
-  public func description() -> Swift.String
   public func component1() -> [Swift.String : Swift.Float]
   public func component2() -> Mocap4Face.Vec2
   public func component3() -> Swift.Float
@@ -1499,15 +1623,22 @@ extension ImageCube {
   public func component7() -> Mocap4Face.Rect
   public func component10() -> Any?
   public func doCopy(_ blendshapes: [Swift.String : Swift.Float], _ normalizedImagePosition: Mocap4Face.Vec2, _ normalizedImageScale: Swift.Float, _ rotationQuaternion: Mocap4Face.Quaternion, _ confidence: Swift.Float, _ inputImageSize: Mocap4Face.Vec2, _ faceRectangle: Mocap4Face.Rect, _ positionInCrop: Mocap4Face.Vec2, _ scaleInCrop: Swift.Float, _ debug: Any? = nil) -> Mocap4Face.FaceTrackerResult
+  @available(*, deprecated, renamed: "FaceTrackerResultSerializer", message: "The standalone serialization functions are not future-proof, use the FaceTrackerSerializer and FaceTrackerDeserializer objects instead, they allow exchanging the serialization format too")
   public func serialize(_ customData: Mocap4Face.KotlinByteArray? = nil) -> Mocap4Face.KotlinByteArray
   public static func == (lhs: Mocap4Face.FaceTrackerResult, rhs: Mocap4Face.FaceTrackerResult) -> Swift.Bool
   public func hash(into hasher: inout Swift.Hasher)
+  public var description: Swift.String {
+    get
+  }
+  public var debugDescription: Swift.String {
+    get
+  }
   @objc deinit
   public var hashValue: Swift.Int {
     get
   }
 }
-@_hasMissingDesignatedInitializers public class FaceTrackerWithResult : Mocap4Face.ConvertibleToKotlin {
+@_hasMissingDesignatedInitializers public class FaceTrackerWithResult : Mocap4Face.ConvertibleToKotlin, Swift.CustomStringConvertible, Swift.CustomDebugStringConvertible {
   required public convenience init(_ wrapped: Mocap4Face.KotlinObjectWrapper)
   public func asKotlin() -> Swift.AnyObject
   public convenience init(_ tracker: Mocap4Face.PersistentFaceTracker, _ result: Mocap4Face.FaceTrackerResult?)
@@ -1519,12 +1650,17 @@ extension ImageCube {
   }
   public func isEqual(_ other: Any?) -> Swift.Bool
   public func hash() -> Swift.UInt
-  public func description() -> Swift.String
   public func component1() -> Mocap4Face.PersistentFaceTracker
   public func component2() -> Mocap4Face.FaceTrackerResult?
   public func doCopy(_ tracker: Mocap4Face.PersistentFaceTracker, _ result: Mocap4Face.FaceTrackerResult?) -> Mocap4Face.FaceTrackerWithResult
   public static func == (lhs: Mocap4Face.FaceTrackerWithResult, rhs: Mocap4Face.FaceTrackerWithResult) -> Swift.Bool
   public func hash(into hasher: inout Swift.Hasher)
+  public var description: Swift.String {
+    get
+  }
+  public var debugDescription: Swift.String {
+    get
+  }
   @objc deinit
   public var hashValue: Swift.Int {
     get
@@ -1630,7 +1766,7 @@ public protocol FaceTrackerReprojector {
   public func reproject(_ normalizedImagePosition: Mocap4Face.Vec2, _ normalizedImageScale: Swift.Float) -> Mocap4Face.FaceTrackerReprojectorResult
   @objc deinit
 }
-@_hasMissingDesignatedInitializers public class FaceTrackerReprojectorResult : Mocap4Face.ConvertibleToKotlin {
+@_hasMissingDesignatedInitializers public class FaceTrackerReprojectorResult : Mocap4Face.ConvertibleToKotlin, Swift.CustomStringConvertible, Swift.CustomDebugStringConvertible {
   required public convenience init(_ wrapped: Mocap4Face.KotlinObjectWrapper)
   public func asKotlin() -> Swift.AnyObject
   public convenience init(_ spatialPosition: Mocap4Face.Vec3, _ spatialScale: Swift.Float)
@@ -1642,12 +1778,17 @@ public protocol FaceTrackerReprojector {
   }
   public func isEqual(_ other: Any?) -> Swift.Bool
   public func hash() -> Swift.UInt
-  public func description() -> Swift.String
   public func component1() -> Mocap4Face.Vec3
   public func component2() -> Swift.Float
   public func doCopy(_ spatialPosition: Mocap4Face.Vec3, _ spatialScale: Swift.Float) -> Mocap4Face.FaceTrackerReprojectorResult
   public static func == (lhs: Mocap4Face.FaceTrackerReprojectorResult, rhs: Mocap4Face.FaceTrackerReprojectorResult) -> Swift.Bool
   public func hash(into hasher: inout Swift.Hasher)
+  public var description: Swift.String {
+    get
+  }
+  public var debugDescription: Swift.String {
+    get
+  }
   @objc deinit
   public var hashValue: Swift.Int {
     get
@@ -1662,6 +1803,60 @@ public protocol FaceTrackerReprojector {
   public static func fixedScaleReprojector(_ fovDegrees: Swift.Float, _ widthToHeight: Swift.Float, _ avatarWidth: Swift.Float, _ scale: Swift.Float) -> Mocap4Face.FaceTrackerReprojector
   public static func fixedScaleReprojector(_ fovDegrees: Swift.Float, _ renderingWidth: Swift.Int, _ renderingHeight: Swift.Int, _ imageWidth: Swift.Int, _ imageHeight: Swift.Int, _ fillMode: Mocap4Face.FillMode, _ avatarWidth: Swift.Float, _ scale: Swift.Float) -> Mocap4Face.FaceTrackerReprojector
   public static func == (lhs: Mocap4Face.FaceTrackerReprojectors, rhs: Mocap4Face.FaceTrackerReprojectors) -> Swift.Bool
+  public func hash(into hasher: inout Swift.Hasher)
+  @objc deinit
+  public var hashValue: Swift.Int {
+    get
+  }
+}
+@_hasMissingDesignatedInitializers public class FaceTrackerResultSerializer : Mocap4Face.ConvertibleToKotlin, Swift.Hashable {
+  required public convenience init(_ wrapped: Mocap4Face.KotlinObjectWrapper)
+  public func asKotlin() -> Swift.AnyObject
+  public var serializationFormat: Mocap4Face.KotlinByteArray {
+    get
+  }
+  public func serialize(_ trackerResult: Mocap4Face.FaceTrackerResult, _ userData: Mocap4Face.KotlinByteArray? = nil) -> Mocap4Face.KotlinByteArray
+  public static func create() -> Mocap4Face.FaceTrackerResultSerializer
+  public static func == (lhs: Mocap4Face.FaceTrackerResultSerializer, rhs: Mocap4Face.FaceTrackerResultSerializer) -> Swift.Bool
+  public func hash(into hasher: inout Swift.Hasher)
+  @objc deinit
+  public var hashValue: Swift.Int {
+    get
+  }
+}
+@_hasMissingDesignatedInitializers public class DeserializedResult : Mocap4Face.ConvertibleToKotlin, Swift.Hashable {
+  required public convenience init(_ wrapped: Mocap4Face.KotlinObjectWrapper)
+  public func asKotlin() -> Swift.AnyObject
+  public convenience init(_ trackerResult: Mocap4Face.FaceTrackerResult, _ userData: Mocap4Face.KotlinByteArray?)
+  @available(*, deprecated, message: "Renamed to trackerResult")
+  public var first: Mocap4Face.FaceTrackerResult {
+    get
+  }
+  @available(*, deprecated, message: "Renamed to userData")
+  public var second: Mocap4Face.KotlinByteArray? {
+    get
+  }
+  public var trackerResult: Mocap4Face.FaceTrackerResult {
+    get
+  }
+  public var userData: Mocap4Face.KotlinByteArray? {
+    get
+  }
+  public func component1() -> Mocap4Face.FaceTrackerResult
+  public func component2() -> Mocap4Face.KotlinByteArray?
+  public static func == (lhs: Mocap4Face.DeserializedResult, rhs: Mocap4Face.DeserializedResult) -> Swift.Bool
+  public func hash(into hasher: inout Swift.Hasher)
+  @objc deinit
+  public var hashValue: Swift.Int {
+    get
+  }
+}
+@_hasMissingDesignatedInitializers public class FaceTrackerResultDeserializer : Mocap4Face.ConvertibleToKotlin, Swift.Hashable {
+  required public convenience init(_ wrapped: Mocap4Face.KotlinObjectWrapper)
+  public func asKotlin() -> Swift.AnyObject
+  public func deserialize(_ data: Mocap4Face.KotlinByteArray) -> Mocap4Face.DeserializedResult
+  public static func create(_ serializationFormat: Mocap4Face.KotlinByteArray) -> Mocap4Face.FaceTrackerResultDeserializer
+  public static func == (lhs: Mocap4Face.FaceTrackerResultDeserializer, rhs: Mocap4Face.FaceTrackerResultDeserializer) -> Swift.Bool
   public func hash(into hasher: inout Swift.Hasher)
   @objc deinit
   public var hashValue: Swift.Int {
@@ -1735,6 +1930,7 @@ public protocol File {
   func readAllBytes() -> Mocap4Face.Future<Mocap4Face.Try<Mocap4Face.KotlinByteArray>>
   func readAllText() -> Mocap4Face.Future<Mocap4Face.Try<Swift.String>>
   func readImage() -> Mocap4Face.Future<Mocap4Face.Try<Mocap4Face.Image>>
+  func readJson() -> Mocap4Face.Future<Mocap4Face.Try<Mocap4Face.DecodedJson>>
 }
 @_hasMissingDesignatedInitializers public class FileWrapper : Mocap4Face.ConvertibleToKotlin, Mocap4Face.File {
   public var _wrappedFile: Swift.AnyObject {
@@ -1751,6 +1947,7 @@ public protocol File {
   public func readAllBytes() -> Mocap4Face.Future<Mocap4Face.Try<Mocap4Face.KotlinByteArray>>
   public func readAllText() -> Mocap4Face.Future<Mocap4Face.Try<Swift.String>>
   public func readImage() -> Mocap4Face.Future<Mocap4Face.Try<Mocap4Face.Image>>
+  public func readJson() -> Mocap4Face.Future<Mocap4Face.Try<Mocap4Face.DecodedJson>>
   @objc deinit
 }
 public protocol FileSystem {
@@ -2042,10 +2239,10 @@ public enum FileWatchErrorSensitivity : Swift.CustomStringConvertible, Mocap4Fac
   public init(_ wrapped: Mocap4Face.KotlinObjectWrapper)
   public func asKotlin() -> Swift.AnyObject
   public static func == (a: Mocap4Face.FileWatchErrorSensitivity, b: Mocap4Face.FileWatchErrorSensitivity) -> Swift.Bool
-  public func hash(into hasher: inout Swift.Hasher)
   public var hashValue: Swift.Int {
     get
   }
+  public func hash(into hasher: inout Swift.Hasher)
 }
 @_hasMissingDesignatedInitializers public class JsonEncoderDecoderClass : Mocap4Face.ConvertibleToKotlin, Swift.Hashable {
   required public convenience init(_ wrapped: Mocap4Face.KotlinObjectWrapper)
@@ -2064,7 +2261,46 @@ public enum FileWatchErrorSensitivity : Swift.CustomStringConvertible, Mocap4Fac
   }
 }
 public var JsonEncoderDecoder: Mocap4Face.JsonEncoderDecoderClass
-@_hasMissingDesignatedInitializers public class Path : Mocap4Face.ConvertibleToKotlin {
+public protocol DecodedJson {
+  var _wrappedDecodedJson: Swift.AnyObject { get }
+  var size: Swift.Int { get }
+  var keys: Any { get }
+  func get(_ key: Swift.String) -> Mocap4Face.DecodedJson?
+  func get(_ index: Swift.Int) -> Mocap4Face.DecodedJson?
+  func getString(_ key: Swift.String) -> Swift.String?
+  func getString(_ index: Swift.Int) -> Swift.String?
+  func getInt(_ key: Swift.String) -> Swift.Int?
+  func getInt(_ index: Swift.Int) -> Swift.Int?
+  func getDouble(_ key: Swift.String) -> Swift.Double?
+  func getDouble(_ index: Swift.Int) -> Swift.Double?
+  func getBool(_ key: Swift.String) -> Swift.Bool?
+  func getBool(_ index: Swift.Int) -> Swift.Bool?
+}
+@_hasMissingDesignatedInitializers public class DecodedJsonWrapper : Mocap4Face.ConvertibleToKotlin, Mocap4Face.DecodedJson {
+  public var _wrappedDecodedJson: Swift.AnyObject {
+    get
+  }
+  required public convenience init(_ wrapped: Mocap4Face.KotlinObjectWrapper)
+  public func asKotlin() -> Swift.AnyObject
+  public var size: Swift.Int {
+    get
+  }
+  public var keys: Any {
+    get
+  }
+  public func get(_ key: Swift.String) -> Mocap4Face.DecodedJson?
+  public func get(_ index: Swift.Int) -> Mocap4Face.DecodedJson?
+  public func getString(_ key: Swift.String) -> Swift.String?
+  public func getString(_ index: Swift.Int) -> Swift.String?
+  public func getInt(_ key: Swift.String) -> Swift.Int?
+  public func getInt(_ index: Swift.Int) -> Swift.Int?
+  public func getDouble(_ key: Swift.String) -> Swift.Double?
+  public func getDouble(_ index: Swift.Int) -> Swift.Double?
+  public func getBool(_ key: Swift.String) -> Swift.Bool?
+  public func getBool(_ index: Swift.Int) -> Swift.Bool?
+  @objc deinit
+}
+@_hasMissingDesignatedInitializers public class Path : Mocap4Face.ConvertibleToKotlin, Swift.CustomStringConvertible, Swift.CustomDebugStringConvertible {
   required public convenience init(_ wrapped: Mocap4Face.KotlinObjectWrapper)
   public func asKotlin() -> Swift.AnyObject
   public convenience init(_ path: Swift.String)
@@ -2077,12 +2313,17 @@ public var JsonEncoderDecoder: Mocap4Face.JsonEncoderDecoderClass
   public func div(_ path: Swift.String) -> Mocap4Face.Path
   public func div(_ path_: Mocap4Face.Path) -> Mocap4Face.Path
   public func normalized() -> Mocap4Face.Path
-  public func description() -> Swift.String
   public func isEqual(_ other: Any?) -> Swift.Bool
   public func hash() -> Swift.UInt
   public func doCopy(_ path: Swift.String) -> Mocap4Face.Path
   public static func == (lhs: Mocap4Face.Path, rhs: Mocap4Face.Path) -> Swift.Bool
   public func hash(into hasher: inout Swift.Hasher)
+  public var description: Swift.String {
+    get
+  }
+  public var debugDescription: Swift.String {
+    get
+  }
   @objc deinit
   public var hashValue: Swift.Int {
     get
@@ -2107,6 +2348,7 @@ public var JsonEncoderDecoder: Mocap4Face.JsonEncoderDecoderClass
   required public convenience init(_ wrapped: Mocap4Face.KotlinObjectWrapper)
   public func asKotlin() -> Swift.AnyObject
   public convenience init(_ interval: Swift.Double)
+  @discardableResult
   public func tick(_ consumer: ((Swift.Double) -> Swift.Void)?) -> Swift.Double
   public static func == (lhs: Mocap4Face.FPS, rhs: Mocap4Face.FPS) -> Swift.Bool
   public func hash(into hasher: inout Swift.Hasher)
@@ -2226,7 +2468,7 @@ public var CommonEmotions: Mocap4Face.CommonEmotionsClass
     get
   }
 }
-@_hasMissingDesignatedInitializers public class KotlinPair<A, B> : Mocap4Face.ConvertibleToKotlin {
+@_hasMissingDesignatedInitializers public class KotlinPair<A, B> : Mocap4Face.ConvertibleToKotlin, Swift.CustomStringConvertible, Swift.CustomDebugStringConvertible {
   required public convenience init(_ wrapped: Mocap4Face.KotlinObjectWrapper)
   public func asKotlin() -> Swift.AnyObject
   public convenience init(_ first: A, _ second: B)
@@ -2244,12 +2486,18 @@ public var CommonEmotions: Mocap4Face.CommonEmotionsClass
   public func toString() -> Swift.String
   public static func == (lhs: Mocap4Face.KotlinPair<A, B>, rhs: Mocap4Face.KotlinPair<A, B>) -> Swift.Bool
   public func hash(into hasher: inout Swift.Hasher)
+  public var description: Swift.String {
+    get
+  }
+  public var debugDescription: Swift.String {
+    get
+  }
   @objc deinit
   public var hashValue: Swift.Int {
     get
   }
 }
-@_hasMissingDesignatedInitializers public class KotlinThrowable : Mocap4Face.ConvertibleToKotlin, Swift.Hashable {
+@_hasMissingDesignatedInitializers public class KotlinThrowable : Mocap4Face.ConvertibleToKotlin, Swift.Hashable, Swift.CustomStringConvertible, Swift.CustomDebugStringConvertible {
   required public convenience init(_ wrapped: Mocap4Face.KotlinObjectWrapper)
   public func asKotlin() -> Swift.AnyObject
   public convenience init(_ message: Swift.String?)
@@ -2264,9 +2512,14 @@ public var CommonEmotions: Mocap4Face.CommonEmotionsClass
   }
   public func getStackTrace() -> Mocap4Face.KotlinArray<Swift.String>
   public func printStackTrace()
-  public func description() -> Swift.String
   public static func == (lhs: Mocap4Face.KotlinThrowable, rhs: Mocap4Face.KotlinThrowable) -> Swift.Bool
   public func hash(into hasher: inout Swift.Hasher)
+  public var description: Swift.String {
+    get
+  }
+  public var debugDescription: Swift.String {
+    get
+  }
   @objc deinit
   public var hashValue: Swift.Int {
     get
@@ -2613,7 +2866,7 @@ public typealias SerializationStrategyWrapper = Mocap4Face.Kotlinx_serialization
   }
 }
 public typealias SerializersModule = Mocap4Face.Kotlinx_serialization_coreSerializersModule
-@_hasMissingDesignatedInitializers public class Kotlinx_serialization_jsonJsonConfiguration : Mocap4Face.ConvertibleToKotlin, Swift.Hashable {
+@_hasMissingDesignatedInitializers public class Kotlinx_serialization_jsonJsonConfiguration : Mocap4Face.ConvertibleToKotlin, Swift.Hashable, Swift.CustomStringConvertible, Swift.CustomDebugStringConvertible {
   required public convenience init(_ wrapped: Mocap4Face.KotlinObjectWrapper)
   public func asKotlin() -> Swift.AnyObject
   public var allowSpecialFloatingPointValues: Swift.Bool {
@@ -2652,9 +2905,14 @@ public typealias SerializersModule = Mocap4Face.Kotlinx_serialization_coreSerial
   public var useArrayPolymorphism: Swift.Bool {
     get
   }
-  public func description() -> Swift.String
   public static func == (lhs: Mocap4Face.Kotlinx_serialization_jsonJsonConfiguration, rhs: Mocap4Face.Kotlinx_serialization_jsonJsonConfiguration) -> Swift.Bool
   public func hash(into hasher: inout Swift.Hasher)
+  public var description: Swift.String {
+    get
+  }
+  public var debugDescription: Swift.String {
+    get
+  }
   @objc deinit
   public var hashValue: Swift.Int {
     get
@@ -2751,14 +3009,19 @@ public protocol KotlinAnnotation {
   public func asKotlin() -> Swift.AnyObject
   @objc deinit
 }
-@_hasMissingDesignatedInitializers public class Kotlinx_serialization_coreSerialKind : Mocap4Face.ConvertibleToKotlin, Swift.Hashable {
+@_hasMissingDesignatedInitializers public class Kotlinx_serialization_coreSerialKind : Mocap4Face.ConvertibleToKotlin, Swift.Hashable, Swift.CustomStringConvertible, Swift.CustomDebugStringConvertible {
   required public convenience init(_ wrapped: Mocap4Face.KotlinObjectWrapper)
   public func asKotlin() -> Swift.AnyObject
   public convenience init()
   public func hash() -> Swift.UInt
-  public func description() -> Swift.String
   public static func == (lhs: Mocap4Face.Kotlinx_serialization_coreSerialKind, rhs: Mocap4Face.Kotlinx_serialization_coreSerialKind) -> Swift.Bool
   public func hash(into hasher: inout Swift.Hasher)
+  public var description: Swift.String {
+    get
+  }
+  public var debugDescription: Swift.String {
+    get
+  }
   @objc deinit
   public var hashValue: Swift.Int {
     get
@@ -2979,6 +3242,9 @@ extension FaceTracker {
   public func track(_ image: CoreVideo.CVPixelBuffer?) -> Mocap4Face.FaceTrackerResult?
   public func track(_ image: CoreMedia.CMSampleBuffer?) -> Mocap4Face.FaceTrackerResult?
   public func track(_ image: UIKit.UIImage?) -> Mocap4Face.FaceTrackerResult?
+}
+extension TrackerImage {
+  public convenience init?(_ sampleBuffer: CoreMedia.CMSampleBuffer)
 }
 extension Mocap4Face.FaceTrackerResult : Swift.Hashable {}
 extension Mocap4Face.FaceTrackerWithResult : Swift.Hashable {}

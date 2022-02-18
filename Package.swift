@@ -7,7 +7,7 @@ let package = Package(
     name: "mocap4face",
     platforms: [
             .iOS(.v13)
-//          .macOS(.v10_14), 
+//          .macOS(.v10_14),
     ],
     products: [
         .library(

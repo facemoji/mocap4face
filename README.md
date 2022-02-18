@@ -2,13 +2,15 @@
   <br>
   <img src="https://user-images.githubusercontent.com/130319/146201564-2bb3680e-38d1-471b-a487-25f416582d71.jpg" alt="mocap4face by alter" width="50%"></a>
   <br>
-  mocap4face by <a href="https://twitter.com/alterz">Alter</a>
+  mocap4face by <a href="https://twitter.com/alterz">alter</a>
   <br>
 </h1>
 
-**mocap4face** by [Alter](https://alter.xyz) is a free, multiplatform SDK for real time facial motion capture based on Facial Action Coding System or ([FACS](https://en.wikipedia.org/wiki/Facial_Action_Coding_System)). It provides real-time FACS-derived blendshape coefficients, and rigid head pose in 3D space from any mobile camera, webcam, photo, or video enabling live animation of 3D avatars, digital characters, and more. [Try the live demo](https://alter.xyz/mocap4face).
+mocap4face by [alter](https://twitter.com/alterz) is a free, multiplatform SDK for real time facial motion capture based on Facial Action Coding System or ([FACS](https://en.wikipedia.org/wiki/Facial_Action_Coding_System)). It provides real-time FACS-derived blendshape coefficients, and rigid head pose in 3D space from any mobile camera, webcam, photo, or video enabling live animation of 3D avatars, digital characters, and more.
 
 After fetching the input from one of the mentioned sources, mocap4face SDK produces data in [ARKit-compatible](https://developer.apple.com/documentation/arkit/arfaceanchor/blendshapelocation) blendshapes, i.e., [morph targets](https://en.wikipedia.org/wiki/Morph_target_animation) weight values as a per-frame expression shown in the video below. Useful for, e.g., animating a 2D or 3D avatar in a way that mimics the user's facial expressions in real-time à la Apple Memoji but without the need of a hardware-based TrueDepth Camera.
+
+With mocap4face, you can drive live avatars or NFT PFPs, build Snapchat-like lenses, AR experiences, face filters that trigger actions, VTubing apps, and more with as little energy impact and CPU/GPU use as possible. As an example, check out how the popular avatar live-streaming app [REALITY](https://reality.app/) is using our SDK.
 
 Please star us ⭐⭐⭐ on GitHub—it motivates us a lot!
 
@@ -24,32 +26,30 @@ Please star us ⭐⭐⭐ on GitHub—it motivates us a lot!
 
 # 🤓 Tech Specs
 
-### 🚉 Supported Platforms
-
-- iOS
-- Android
-- Web
-- Unity (soon, see [work-in-progress](https://twitter.com/robinraszka/status/1487519345811111940))
+- Platforms
+- - iOS
+- - Android
+- - Web
+- [3D reprojection to the input photo/video](https://studio.facemoji.co/docs/Re-projecting-3D-Faces-for-Augmented-Reality_a2d9e35a-3d9a-4fd1-b58a-51db06139d4d)
+- Platform-suited API and packaging with internal optimizations
+- Simultaneous back and front camera support
 
 ### ✨ Key Features
 - `42` tracked facial expressions via blendshapes
 - Eye tracking including eye gaze vector
 - Tongue tracking
-- `≤ ±50°` pitch, `≤ ±40°` yaw and `≤ ±30°` roll tracking coverage
-- [3D reprojection to the input photo/video](https://studio.facemoji.co/docs/Re-projecting-3D-Faces-for-Augmented-Reality_a2d9e35a-3d9a-4fd1-b58a-51db06139d4d)
-- Platform-suited API and packaging with internal optimizations
-- Simultaneous back and front camera support
 - Light & fast, just `3MB` ML model size
+- `≤ ±50°` pitch, `≤ ±40°` yaw and `≤ ±30°` roll tracking coverage
 
 ### 🤳 Input
 
-- Any webcam
+- All RGB camera
 - Photo
 - Video
 
 ### 📦 Output
 
-- [ARKit-compatible](https://developer.apple.com/documentation/arkit/arfaceanchor/blendshapelocation) blendshapes
+- ARKit-compatible blendshapes
 - Head position and scale in 2D and 3D
 - Head rotation in world coordinates
 
@@ -92,7 +92,7 @@ allprojects {
 }
 ```
 
-3. To use the SDK in your project, add `implementation 'co.facemoji:mocap4face:0.1.0'` to your Gradle dependencies
+3. To use the SDK in your project, add `implementation 'co.facemoji:mocap4face:0.3.0'` to your Gradle dependencies
 
 ### Web
 
@@ -108,23 +108,33 @@ You can also run `npm run build` to create a production bundle of the demo app.
 
 # 🚀 Use Cases
 
-For example, check out how the popular avatar live-streaming app [REALITY](https://reality.app/) is using mocap4face for VTubing. Other possible use-cases:
-
-- Audio-only chat apps
-- Next-gen profile pics
+- AR for NFTs profile pics
 - Live avatar experiences
-- Snapchat-like lenses
+- Snapchat-like lense
 - AR experiences
 - VTubing apps
 - Live streaming apps
 - Face filters
-- Personalized stickers
 - AR games with facial triggers
-- Role-playing games
+- Beauty AR
+- Virtual try-on
+- Play to earn games
+
+# ❤️ Links
+
+- [FAQ](https://studio.facemoji.co/docs/FAQ_6b345137-5916-4017-b444-9d15398c8af0)
+- [Blog post](https://studio.facemoji.co/docs/Introducing-mocap4face-SDK_a660c539-b3fb-4f0b-a38e-3f4e850a5769)
+- [Facemoji Studio](https://studio.facemoji.co)
+- [Twitter](https://twitter.com/alterz)
+- [Discord](https://discord.gg/alterz)
+- [Website](https://facemoji.co)
 
 # 📄 License
 
-This library is provided under the [Alter SDK License Agreement](LICENSE.md). The sample code in this repository is provided under the [Alter Samples License](ios-example/LICENSE.md).
+This library is provided under the Facemoji SDK License Agreement—see [LICENSE](LICENSE.md). Also make sure to check out
+our [FAQ](https://studio.facemoji.co/docs/FAQ_6b345137-5916-4017-b444-9d15398c8af0) for more details.
+
+The sample code in this repository is provided under the [Facemoji Samples License](ios-example/LICENSE.md)
 
 # 🙏 Notices
 
@@ -139,18 +149,3 @@ OSS used in mocap4face SDK:
 - [okhttp](https://square.github.io/okhttp/#license)
 
 Original [video](https://vimeo.com/125095515) by LaBeouf, Rönkkö & Turner.
-
-# ❤️ Links
-
-### mocap4face
-
-- [Live demo](https://alter.xyz/mocap4face)
-- [Blog post](https://studio.facemoji.co/docs/Introducing-mocap4face-SDK_a660c539-b3fb-4f0b-a38e-3f4e850a5769)
-- [FAQ](https://studio.facemoji.co/docs/FAQ_6b345137-5916-4017-b444-9d15398c8af0)
-
-### Company
-
-- [Twitter](https://twitter.com/alterz)
-- [Discord](https://discord.gg/alterz)
-- [LinkedIn](https://www.linkedin.com/company/alterxyz/)
-- [Website](https://alter.xyz)

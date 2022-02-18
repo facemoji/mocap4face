@@ -1,0 +1,4 @@
+framework module Mocap4Face {
+  header "Mocap4Face-Swift.h"
+  requires objc
+}
