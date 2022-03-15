@@ -12,13 +12,13 @@ let package = Package(
     products: [
         .library(
             name: "mocap4face",
-            targets: ["mocap4face"]),
+            targets: ["Mocap4Face"]),
     ],
     dependencies: [
     ],
     targets: [
         .binaryTarget(
-                    name: "mocap4face",
+                    name: "Mocap4Face",
                     path: "frameworks/Mocap4Face.xcframework"
                 )
     ]
