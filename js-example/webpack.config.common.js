@@ -1,8 +1,8 @@
-const path = require('path');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-const { CleanWebpackPlugin } = require('clean-webpack-plugin');
-const CopyPlugin = require('copy-webpack-plugin');
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const path = require('path')
+const HtmlWebpackPlugin = require('html-webpack-plugin')
+const { CleanWebpackPlugin } = require('clean-webpack-plugin')
+const CopyPlugin = require('copy-webpack-plugin')
+const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 
 module.exports = {
     entry: './src/index.ts',
@@ -35,14 +35,14 @@ module.exports = {
             patterns: [
                 {
                     from: 'models/**/*',
-                    context: path.dirname(require.resolve('@facemoji/mocap4face/package.json')),
+                    context: path.dirname(require.resolve('@0xalter/mocap4face/package.json')),
                 },
                 {
                     from: '*.json',
-                    context: path.dirname(require.resolve('@facemoji/mocap4face/package.json')),
+                    context: path.dirname(require.resolve('@0xalter/mocap4face/package.json')),
                 },
             ],
         }),
         new MiniCssExtractPlugin(),
     ],
-};
+}
