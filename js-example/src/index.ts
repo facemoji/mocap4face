@@ -2,6 +2,8 @@ import {
     ApplicationContext,
     FacemojiAPI,
     FaceTracker,
+    FaceTrackerResultDeserializer,
+    FaceTrackerResultSerializer,
     FPS,
     Logger,
     LogLevel,
@@ -26,6 +28,10 @@ function startTracking() {
     const context = new ApplicationContext(window.location.href) // Set a different URL here if you host application resources elsewhere
     const fs = new ResourceFileSystem(context)
     const fps = new FPS(1)
+
+    // uncomment for de/serialization example bellow
+    // const serializer = FaceTrackerResultSerializer.create()
+    // const deserializer = FaceTrackerResultDeserializer.create(serializer.serializationFormat)
 
     // Initialize the API and activate API key
     // Note that without an API key the SDK works only for a short period of time
@@ -104,6 +110,19 @@ function startTracking() {
             setFaceRectangleVisible(false)
             return // No face found or video frame could not be processed
         }
+
+        // Serialize/deserialize tracking result for e.g. sending over WebRTC, use TrackerResultAvatarController for that
+        // if (lastResult) {
+        //     // send this over network or save to file
+        //     // DON'T FORGET to send serializer.serializationFormat as well, it's necessary for deserializer instantiation
+        //     const serialized = serializer.serialize(lastResult)
+
+        //     // see deserializer creation above, serializationFormat is required
+        //     const deserialized = deserializer.deserialize(serialized)
+
+        //     const result = deserialized.trackerResult
+        //     console.log(result)
+        // }
 
         // Update UI
         for (const [name, value] of lastResult.blendshapes) {
