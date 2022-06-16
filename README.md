@@ -134,7 +134,7 @@ You can also run `npm run build` to create a production bundle of the demo app.
 This library is provided under the Facemoji SDK License Agreement—see [LICENSE](LICENSE.md). Also make sure to check out
 our [FAQ](https://studio.facemoji.co/docs/FAQ_6b345137-5916-4017-b444-9d15398c8af0) for more details.
 
-The sample code in this repository is provided under the [Facemoji Samples License](ios-example/LICENSE.md)
+The sample code in this repository is provided under the [Facemoji Samples License](ios-example/LICENSE.md).
 
 # 🙏 Notices
 
@@ -149,3 +149,6 @@ OSS used in mocap4face SDK:
 - [okhttp](https://square.github.io/okhttp/#license)
 
 Original [video](https://vimeo.com/125095515) by LaBeouf, Rönkkö & Turner.
+
+
+This library transitively uses open source software, see the full list of our [OSS dependencies and license notices](license/README.md).
