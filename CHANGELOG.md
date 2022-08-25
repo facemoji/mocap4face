@@ -1,6 +1,17 @@
 # Changelog
 All notable changes to this project will be documented in this file. This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## 0.4.0 - 2022-08-25
+### Changed
+- BREAKING: Added OpenCL shader caching to Android GPU models. Because of this `createVideoTracker` and `createImageTracker` now requires an activity context to access cache directories.
+- Updated Kotlin to 1.7.20 which brings performance and memory improvements
+
+### Fixed
+- Swift package manager not working with Xcode 13.3
+- Updated face tracker result serialization to work around a Protocol buffers serializer bug, previous serialization version is deprecated and will become unsupported in time
+- Problems with OpenGL context handling on Android
+- Memory leaks on iOS
+
 ## 0.3.0 - 2022-02-18
 ### Changed
 - Android dependency coordinates changed from `co.facemoji:mocap4face` to `alter:mocap4face`

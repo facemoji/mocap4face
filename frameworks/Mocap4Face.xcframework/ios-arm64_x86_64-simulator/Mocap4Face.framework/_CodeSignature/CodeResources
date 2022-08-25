@@ -6,35 +6,35 @@
 	<dict>
 		<key>Headers/Mocap4Face-Swift.h</key>
 		<data>
-		z+bXlyKnjH6VPb+6x+KwffQcRZ0=
+		w0XYCbadR/v3or+2ArIUJkXAzSw=
 		</data>
 		<key>Info.plist</key>
 		<data>
-		KsMEEIrcLVZuy9RYxplD2GXXfKQ=
+		Qa8/SjD3N0x59kccThPKQk0K89g=
 		</data>
 		<key>Modules/Mocap4Face.swiftmodule/arm64-apple-ios-simulator.swiftdoc</key>
 		<data>
-		/EFuQHb6PB47gKzqhq36+2rQero=
+		bOCm4uocyYUpDkMqvwNQ1kkhpec=
 		</data>
 		<key>Modules/Mocap4Face.swiftmodule/arm64-apple-ios-simulator.swiftinterface</key>
 		<data>
-		jhHYdLOjG8SBGJ9MwNgfYXwrHBU=
+		+vpWc49JvFhLvGnSxidrThTGqYs=
 		</data>
 		<key>Modules/Mocap4Face.swiftmodule/arm64-apple-ios-simulator.swiftmodule</key>
 		<data>
-		sSIRHYT8y0XsmdAg0CZIKVvhzYA=
+		jPM4T4qNoSMONVTQWjICBexGKOo=
 		</data>
 		<key>Modules/Mocap4Face.swiftmodule/arm64.swiftdoc</key>
 		<data>
-		/EFuQHb6PB47gKzqhq36+2rQero=
+		bOCm4uocyYUpDkMqvwNQ1kkhpec=
 		</data>
 		<key>Modules/Mocap4Face.swiftmodule/arm64.swiftinterface</key>
 		<data>
-		jhHYdLOjG8SBGJ9MwNgfYXwrHBU=
+		+vpWc49JvFhLvGnSxidrThTGqYs=
 		</data>
 		<key>Modules/Mocap4Face.swiftmodule/arm64.swiftmodule</key>
 		<data>
-		sSIRHYT8y0XsmdAg0CZIKVvhzYA=
+		jPM4T4qNoSMONVTQWjICBexGKOo=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -47,49 +47,49 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			V/wUhQrT/ELlxN34xl0e8XIiledOUbYGoKzmwREWdCQ=
+			OfD8CjU+AqjNRadTYxqD3lWkZahiyXHi8hfqJ3spJSY=
 			</data>
 		</dict>
 		<key>Modules/Mocap4Face.swiftmodule/arm64-apple-ios-simulator.swiftdoc</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			f3yym3To8tL4tKg92yGVykZM/FVV9iAHjBAooKjH0P0=
+			PVKOAXbrP1uvOgDyAzTwiMZuvMJAB9J6lHMjl4tT0Rc=
 			</data>
 		</dict>
 		<key>Modules/Mocap4Face.swiftmodule/arm64-apple-ios-simulator.swiftinterface</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			JBz0zMn9TarGvwyjQcRT/kIWVNKw+gfIO9txQ0Iriqg=
+			JlwJzeF/XRHokhY4UtuAy+HTCmt9+SkosWO1eJav3sI=
 			</data>
 		</dict>
 		<key>Modules/Mocap4Face.swiftmodule/arm64-apple-ios-simulator.swiftmodule</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			AW19LcRENrsFU0Eo93CR6bAAcK/rqtyffPrbKsgBylU=
+			wzKdTWJuWrfQ45onxQj7AFTfewPqHNrhJlO/FOyV9A8=
 			</data>
 		</dict>
 		<key>Modules/Mocap4Face.swiftmodule/arm64.swiftdoc</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			f3yym3To8tL4tKg92yGVykZM/FVV9iAHjBAooKjH0P0=
+			PVKOAXbrP1uvOgDyAzTwiMZuvMJAB9J6lHMjl4tT0Rc=
 			</data>
 		</dict>
 		<key>Modules/Mocap4Face.swiftmodule/arm64.swiftinterface</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			JBz0zMn9TarGvwyjQcRT/kIWVNKw+gfIO9txQ0Iriqg=
+			JlwJzeF/XRHokhY4UtuAy+HTCmt9+SkosWO1eJav3sI=
 			</data>
 		</dict>
 		<key>Modules/Mocap4Face.swiftmodule/arm64.swiftmodule</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			AW19LcRENrsFU0Eo93CR6bAAcK/rqtyffPrbKsgBylU=
+			wzKdTWJuWrfQ45onxQj7AFTfewPqHNrhJlO/FOyV9A8=
 			</data>
 		</dict>
 		<key>Modules/module.modulemap</key>
