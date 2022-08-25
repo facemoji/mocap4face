@@ -35,23 +35,6 @@ class ViewController: UIViewController, VideoCaptureDelegate, SCNSceneRendererDe
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Initialize the API
-        // Get your own key at https://studio.facemoji.co
-        // Without the key the API works for a limited time only
-        FacemojiAPI.initialize("<YOUR KEY HERE>").whenDone { activated in
-            if activated {
-                print("mocap4face: API Key Validation Successful")
-            } else {
-                print("mocap4face: API Key Validation Failed")
-            }
-        }
-        
-        FacemojiAPI.addDemoTimeoutCallback {
-            DispatchQueue.main.async { [weak self] in
-                self?.resolveLabelVisibility()
-            }
-        }
-        
         // Create face tracker
         tracker = FaceTracker.createVideoTracker()
             .logError("Error loading tracker")
@@ -171,15 +154,7 @@ class ViewController: UIViewController, VideoCaptureDelegate, SCNSceneRendererDe
         }
         cameraView.frame = CGRect(x: 0, y: 0, width: cameraViewContainer.bounds.width, height: cameraViewContainer.bounds.height)
         
-        resolveLabelVisibility()
-    }
-    
-    private func resolveLabelVisibility() {
-        if UIDevice.current.orientation.isLandscape {
-            lblText.isHidden = true
-        } else {
-            lblText.isHidden = FacemojiAPI.isDemoMode
-        }
+        lblText.isHidden = true
     }
     
     

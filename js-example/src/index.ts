@@ -1,6 +1,5 @@
 import {
     ApplicationContext,
-    FacemojiAPI,
     FaceTracker,
     FaceTrackerResultDeserializer,
     FaceTrackerResultSerializer,
@@ -32,16 +31,6 @@ function startTracking() {
     // uncomment for de/serialization example bellow
     // const serializer = FaceTrackerResultSerializer.create()
     // const deserializer = FaceTrackerResultDeserializer.create(serializer.serializationFormat)
-
-    // Initialize the API and activate API key
-    // Note that without an API key the SDK works only for a short period of time
-    FacemojiAPI.initialize('<YOUR KEY HERE>', context).then((activated) => {
-        if (activated) {
-            console.info('API successfully activated')
-        } else {
-            console.info('API could not be activated')
-        }
-    })
 
     const webcamAvailable = checkWebcamAvailable()
 

@@ -5,24 +5,22 @@ import co.facemoji.async.Future
 import co.facemoji.io.ApplicationContext
 import co.facemoji.io.ResourceFileSystem
 import co.facemoji.logging.logError
-import co.facemoji.tracker.CameraWrapper
-import co.facemoji.tracker.FaceTracker
-import co.facemoji.tracker.FaceTrackerResult
-import co.facemoji.tracker.OpenGLTexture
+import co.facemoji.system.OpenGLContext
+import co.facemoji.tracker.*
 
 /**
  * Wraps a camera source and a face tracker into one object.
  */
-class CameraTracker(context: Context) {
-    private val cameraWrapper: CameraWrapper = CameraWrapper(context)
+class CameraTracker(context: Context, glContext: OpenGLContext) {
+    private val cameraWrapper: CameraWrapper = CameraWrapper(context, glContext)
     private val faceTracker: Future<FaceTracker?>
     var trackerDelegate: (OpenGLTexture, FaceTrackerResult?) -> Unit = { _, _ -> }
     var frontFacing = true
     init {
         cameraWrapper.start(frontFacing = frontFacing).logError("Error initializing camera")
-        cameraWrapper.addOnFrameListener(this::onCameraImage)
-        faceTracker = FaceTracker.createVideoTracker(ResourceFileSystem(ApplicationContext(context)), cameraWrapper.openglContext)
+        faceTracker = FaceTracker.createVideoTracker(ResourceFileSystem(ApplicationContext(context)), TrackerGPUContext(glContext, context))
                 .logError("Error initializing face tracker")
+        cameraWrapper.addOnFrameListener(this::onCameraImage)
     }
 
     /**

@@ -9,12 +9,7 @@ import android.view.WindowManager
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
-import co.facemoji.api.FacemojiAPI
-import co.facemoji.io.ApplicationContext
-import co.facemoji.logging.LogLevel
-import co.facemoji.logging.Logger
-import co.facemoji.logging.error
-import co.facemoji.logging.info
+import co.facemoji.logging.*
 import co.facemoji.math.Quaternion
 import co.facemoji.tracker.FaceTrackerResult
 import co.facemoji.tracker.OpenGLTexture
@@ -40,21 +35,6 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(null)
         Logger.logLevel = LogLevel.Debug
 
-        FacemojiAPI.initialize("<YOUR KEY HERE>", ApplicationContext(applicationContext))
-            .whenDone { activated ->
-                if (activated) {
-                    Logger.info("API activation was successful")
-                } else {
-                    Logger.error("API activation failed")
-                }
-            }
-
-        FacemojiAPI.addDemoTimeoutCallback {
-            runOnUiThread {
-                resolveTimeoutLabelVisibility()
-            }
-        }
-
         window.addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON)
 
         setContentView(R.layout.activity_main)
@@ -65,20 +45,17 @@ class MainActivity : AppCompatActivity() {
         findViewById<ImageView>(R.id.switchCamera).setOnClickListener {
             cameraTracker?.switchCamera()
         }
-        requestCameraPermission()
-    }
 
-    private fun resolveTimeoutLabelVisibility() {
-        if (resources.configuration.orientation == Configuration.ORIENTATION_LANDSCAPE) {
-            timeoutLabel?.visibility = View.GONE
-        } else {
-            timeoutLabel?.visibility = if (FacemojiAPI.isDemoMode) View.GONE else View.VISIBLE
-        }
+        cameraView = CameraTextureView(applicationContext)
+        facemojiContainer?.addView(cameraView, 0)
+        Logger.warning("Creating CameraTextureView $cameraView")
+
+        requestCameraPermission()
     }
 
     override fun onConfigurationChanged(newConfig: Configuration) {
         super.onConfigurationChanged(newConfig)
-        resolveTimeoutLabelVisibility()
+        timeoutLabel?.visibility = View.GONE
     }
 
     private fun onTracker(cameraImage: OpenGLTexture, trackerResult: FaceTrackerResult?) {
@@ -113,22 +90,17 @@ class MainActivity : AppCompatActivity() {
     @AfterPermissionGranted(CAMERA_REQUEST_CODE)
     @Suppress("UNUSED")
     private fun onCameraEnabled() {
-        val cameraTracker = CameraTracker(this)
-        cameraView = CameraTextureView(
-            applicationContext,
-            cameraTracker.openGLContext
-        ) // must share the OpenGL context
-        runOnUiThread {
-            facemojiContainer?.addView(cameraView, 0)
-        }
-        cameraTracker.trackerDelegate = this::onTracker
-        cameraTracker.blendshapeNames.whenDone { names ->
-            runOnUiThread {
-                val headPoseNames = faceRotationToSliders(Quaternion.identity).keys
-                blendshapesView?.blendshapeNames = (names + headPoseNames).sorted()
+        cameraView?.addGLContextCreatedListener { glContext ->
+            val cameraTracker = CameraTracker(this, glContext)
+            cameraTracker.trackerDelegate = this::onTracker
+            cameraTracker.blendshapeNames.whenDone { names ->
+                runOnUiThread {
+                    val headPoseNames = faceRotationToSliders(Quaternion.identity).keys
+                    blendshapesView?.blendshapeNames = (names + headPoseNames).sorted()
+                }
             }
+            this.cameraTracker = cameraTracker
         }
-        this.cameraTracker = cameraTracker
     }
 
     private fun requestCameraPermission() {
