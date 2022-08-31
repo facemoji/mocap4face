@@ -2,7 +2,7 @@
 DISCONTINUED!
 </h1>
 
-Due to changes on the horizon, we’ve disabled new API keys generation in the Alter Studio. This means we are pausing new partner signups. Existing partners will have access to mocap4face until November 29, 2022 after which access will be discontinued.
+Due to changes on the horizon, we’ve disabled new API keys generation in the Alter Studio. This means we are pausing new partner signups. Existing partners will have access to mocap4face until August 31, 2022 after which access will be discontinued.
 
 We apologize for any interruptions to your development.
 
