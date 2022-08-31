@@ -1,6 +1,15 @@
 <h1 align="center">
-  <br>
-  <img src="https://user-images.githubusercontent.com/130319/146201564-2bb3680e-38d1-471b-a487-25f416582d71.jpg" alt="mocap4face by alter" width="50%"></a>
+DISCONTINUED!
+</h1>
+
+Due to changes on the horizon, we’ve disabled new API keys generation in the Alter Studio. This means we are pausing new partner signups. Existing partners will have access to mocap4face until November 29, 2022 after which access will be discontinued.
+
+We apologize for any interruptions to your development.
+
+As always, we are grateful for your trust and support.
+
+
+<h1 align="center">
   <br>
   mocap4face by <a href="https://twitter.com/alterz">alter</a>
   <br>
