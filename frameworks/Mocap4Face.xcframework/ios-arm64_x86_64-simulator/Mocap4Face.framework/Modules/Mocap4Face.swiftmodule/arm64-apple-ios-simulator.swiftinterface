@@ -1723,6 +1723,8 @@ extension Mocap4Face.ImageCube {
   @discardableResult
   public func start(_ frontFacing: Swift.Bool) -> Mocap4Face.Future<Mocap4Face.Try<Swift.Void>>
   @discardableResult
+  public func start(_ frontFacing: Swift.Bool, _ deviceId: Swift.String?) -> Mocap4Face.Future<Mocap4Face.Try<Swift.Void>>
+  @discardableResult
   public func start() -> Mocap4Face.Future<Mocap4Face.Try<Swift.Void>>
   public func addOnFrameListener(_ listener: @escaping (Mocap4Face.TrackerImage) -> Swift.Void)
   public func changeOrientation(_ newOrientation: Mocap4Face.UIKUIDeviceOrientation? = nil)
@@ -1827,6 +1829,48 @@ extension Mocap4Face.ImageCube {
     get
   }
 }
+public enum TrackerEngine : Swift.CustomStringConvertible, Mocap4Face.ConvertibleToKotlin, Swift.CustomDebugStringConvertible {
+  case auto_
+  case cpu
+  case gpu
+  case neuralengine
+  public var ordinal: Swift.Int {
+    get
+  }
+  public var description: Swift.String {
+    get
+  }
+  public var debugDescription: Swift.String {
+    get
+  }
+  public init(_ wrapped: Mocap4Face.KotlinObjectWrapper)
+  public func asKotlin() -> Swift.AnyObject
+  public static func == (a: Mocap4Face.TrackerEngine, b: Mocap4Face.TrackerEngine) -> Swift.Bool
+  public func hash(into hasher: inout Swift.Hasher)
+  public var hashValue: Swift.Int {
+    get
+  }
+}
+public enum TrackerVariant : Swift.CustomStringConvertible, Mocap4Face.ConvertibleToKotlin, Swift.CustomDebugStringConvertible {
+  case compatible
+  case quality
+  public var ordinal: Swift.Int {
+    get
+  }
+  public var description: Swift.String {
+    get
+  }
+  public var debugDescription: Swift.String {
+    get
+  }
+  public init(_ wrapped: Mocap4Face.KotlinObjectWrapper)
+  public func asKotlin() -> Swift.AnyObject
+  public static func == (a: Mocap4Face.TrackerVariant, b: Mocap4Face.TrackerVariant) -> Swift.Bool
+  public func hash(into hasher: inout Swift.Hasher)
+  public var hashValue: Swift.Int {
+    get
+  }
+}
 @_hasMissingDesignatedInitializers public class TrackerImage : Mocap4Face.ConvertibleToKotlin, Swift.Hashable {
   convenience required public init(_ wrapped: Mocap4Face.KotlinObjectWrapper)
   public func asKotlin() -> Swift.AnyObject
@@ -1883,17 +1927,17 @@ public protocol PersistentFaceTracker {
   convenience required public init(_ wrapped: Mocap4Face.KotlinObjectWrapper)
   public func asKotlin() -> Swift.AnyObject
   @objc deinit
-  convenience public init<TStabilizer>(_ modelName: Swift.String? = nil, _ stabilizerImagePosition: TStabilizer? = nil, _ stabilizerImageScale: TStabilizer? = nil, _ stabilizerRotation: TStabilizer? = nil, _ blendshapeProcessor: Mocap4Face.BlendshapeProcessor? = nil, _ feedbackDetectorScale: Swift.Float? = nil, _ feedbackDetectorOffset: Swift.Float? = nil) where TStabilizer : Mocap4Face.Stabilizer, TStabilizer.T == Mocap4Face.Vec2
+  convenience public init(_ trackerVariant: Mocap4Face.TrackerVariant? = nil, _ trackerEngine: Mocap4Face.TrackerEngine? = nil, _ modelName: Swift.String? = nil, _ transformsProcessor: Mocap4Face.TransformsProcessor? = nil, _ blendshapeProcessor: Mocap4Face.BlendshapeProcessor? = nil, _ feedbackDetectorScale: Swift.Float? = nil, _ feedbackDetectorOffset: Swift.Float? = nil)
+  public var trackerVariant: Mocap4Face.TrackerVariant? {
+    get
+  }
+  public var trackerEngine: Mocap4Face.TrackerEngine? {
+    get
+  }
   public var modelName: Swift.String? {
     get
   }
-  public var stabilizerImagePosition: Mocap4Face.StabilizerWrapper<Mocap4Face.Vec2>? {
-    get
-  }
-  public var stabilizerImageScale: Mocap4Face.StabilizerWrapper<Mocap4Face.Vec1>? {
-    get
-  }
-  public var stabilizerRotation: Mocap4Face.StabilizerWrapper<Mocap4Face.Quaternion>? {
+  public var transformsProcessor: Mocap4Face.TransformsProcessor? {
     get
   }
   public var blendshapeProcessor: Mocap4Face.BlendshapeProcessor? {
@@ -1924,6 +1968,7 @@ public protocol PersistentFaceTracker {
   public func track(_ image: Mocap4Face.TrackerImage) -> Mocap4Face.FaceTrackerResult?
   public static func createVideoTracker(_ fileSystem: Mocap4Face.FileSystem, _ context: Mocap4Face.TrackerGPUContext) -> Mocap4Face.Future<Mocap4Face.Try<Mocap4Face.FaceTracker>>
   public static func createVideoTracker(_ fileSystem: Mocap4Face.FileSystem, _ context: Mocap4Face.TrackerGPUContext, _ options: Mocap4Face.AdvancedFaceTrackerOptions) -> Mocap4Face.Future<Mocap4Face.Try<Mocap4Face.FaceTracker>>
+  public static func createImageTracker(_ fileSystem: Mocap4Face.FileSystem, _ context: Mocap4Face.TrackerGPUContext, _ options: Mocap4Face.AdvancedFaceTrackerOptions) -> Mocap4Face.Future<Mocap4Face.Try<Mocap4Face.FaceTracker>>
   public static func createImageTracker(_ fileSystem: Mocap4Face.FileSystem, _ context: Mocap4Face.TrackerGPUContext) -> Mocap4Face.Future<Mocap4Face.Try<Mocap4Face.FaceTracker>>
   public static func == (lhs: Mocap4Face.FaceTracker, rhs: Mocap4Face.FaceTracker) -> Swift.Bool
   public func hash(into hasher: inout Swift.Hasher)
@@ -2275,6 +2320,99 @@ public protocol BlendshapeProcessor {
   public func normalizeBy(_ size: Mocap4Face.Vec2) -> Mocap4Face.Rect
   public static func == (lhs: Mocap4Face.Rect, rhs: Mocap4Face.Rect) -> Swift.Bool
   override public func hash(into hasher: inout Swift.Hasher)
+}
+@_hasMissingDesignatedInitializers public class TransformsProcessorResult : Mocap4Face.ConvertibleToKotlin, Swift.CustomStringConvertible, Swift.CustomDebugStringConvertible {
+  convenience required public init(_ wrapped: Mocap4Face.KotlinObjectWrapper)
+  public func asKotlin() -> Swift.AnyObject
+  @objc deinit
+  convenience public init(_ processor: Mocap4Face.TransformsProcessor, _ imagePosition: Mocap4Face.Vec2, _ imageScale: Swift.Float, _ rotation: Mocap4Face.Quaternion)
+  public var processor: Mocap4Face.TransformsProcessor {
+    get
+  }
+  public var imagePosition: Mocap4Face.Vec2 {
+    get
+  }
+  public var imageScale: Swift.Float {
+    get
+  }
+  public var rotation: Mocap4Face.Quaternion {
+    get
+  }
+  public func isEqual(_ other: Any?) -> Swift.Bool
+  public func hash() -> Swift.UInt
+  public func component1() -> Mocap4Face.TransformsProcessor
+  public func component2() -> Mocap4Face.Vec2
+  public func component3() -> Swift.Float
+  public func component4() -> Mocap4Face.Quaternion
+  public func doCopy(_ processor: Mocap4Face.TransformsProcessor, _ imagePosition: Mocap4Face.Vec2, _ imageScale: Swift.Float, _ rotation: Mocap4Face.Quaternion) -> Mocap4Face.TransformsProcessorResult
+  public static func == (lhs: Mocap4Face.TransformsProcessorResult, rhs: Mocap4Face.TransformsProcessorResult) -> Swift.Bool
+  public func hash(into hasher: inout Swift.Hasher)
+  public var description: Swift.String {
+    get
+  }
+  public var debugDescription: Swift.String {
+    get
+  }
+  public var hashValue: Swift.Int {
+    get
+  }
+}
+public protocol TransformsProcessor {
+  func process(_ imagePosition: Mocap4Face.Vec2, _ imageScale: Swift.Float, _ rotation: Mocap4Face.Quaternion) -> Mocap4Face.TransformsProcessorResult
+}
+@_hasMissingDesignatedInitializers public class TransformsProcessorWrapper : Mocap4Face.ConvertibleToKotlin, Mocap4Face.TransformsProcessor {
+  public var _wrappedTransformsProcessor: Swift.AnyObject {
+    get
+  }
+  convenience required public init(_ wrapped: Mocap4Face.KotlinObjectWrapper)
+  public func asKotlin() -> Swift.AnyObject
+  @objc deinit
+  public func process(_ imagePosition: Mocap4Face.Vec2, _ imageScale: Swift.Float, _ rotation: Mocap4Face.Quaternion) -> Mocap4Face.TransformsProcessorResult
+}
+@_hasMissingDesignatedInitializers public class TPStabilize : Mocap4Face.ConvertibleToKotlin, Swift.Hashable, Mocap4Face.TransformsProcessor {
+  public var _wrappedTransformsProcessor: Swift.AnyObject {
+    get
+  }
+  convenience required public init(_ wrapped: Mocap4Face.KotlinObjectWrapper)
+  public func asKotlin() -> Swift.AnyObject
+  @objc deinit
+  convenience public init<TStabilizer>(_ stabilizerImagePosition: TStabilizer, _ stabilizerImageScale: TStabilizer, _ stabilizerRotation: TStabilizer) where TStabilizer : Mocap4Face.Stabilizer, TStabilizer.T == Mocap4Face.Vec2
+  public func process(_ imagePosition: Mocap4Face.Vec2, _ imageScale: Swift.Float, _ rotation: Mocap4Face.Quaternion) -> Mocap4Face.TransformsProcessorResult
+  public static func == (lhs: Mocap4Face.TPStabilize, rhs: Mocap4Face.TPStabilize) -> Swift.Bool
+  public func hash(into hasher: inout Swift.Hasher)
+  public var hashValue: Swift.Int {
+    get
+  }
+}
+@_hasMissingDesignatedInitializers public class TPOffsetPosition : Mocap4Face.ConvertibleToKotlin, Swift.Hashable, Mocap4Face.TransformsProcessor {
+  public var _wrappedTransformsProcessor: Swift.AnyObject {
+    get
+  }
+  convenience required public init(_ wrapped: Mocap4Face.KotlinObjectWrapper)
+  public func asKotlin() -> Swift.AnyObject
+  @objc deinit
+  convenience public init(_ offset: Mocap4Face.Vec2)
+  public func process(_ imagePosition: Mocap4Face.Vec2, _ imageScale: Swift.Float, _ rotation: Mocap4Face.Quaternion) -> Mocap4Face.TransformsProcessorResult
+  public static func == (lhs: Mocap4Face.TPOffsetPosition, rhs: Mocap4Face.TPOffsetPosition) -> Swift.Bool
+  public func hash(into hasher: inout Swift.Hasher)
+  public var hashValue: Swift.Int {
+    get
+  }
+}
+@_hasMissingDesignatedInitializers public class TPChain : Mocap4Face.ConvertibleToKotlin, Swift.Hashable, Mocap4Face.TransformsProcessor {
+  public var _wrappedTransformsProcessor: Swift.AnyObject {
+    get
+  }
+  convenience required public init(_ wrapped: Mocap4Face.KotlinObjectWrapper)
+  public func asKotlin() -> Swift.AnyObject
+  @objc deinit
+  convenience public init(_ processors: Any)
+  public func process(_ imagePosition: Mocap4Face.Vec2, _ imageScale: Swift.Float, _ rotation: Mocap4Face.Quaternion) -> Mocap4Face.TransformsProcessorResult
+  public static func == (lhs: Mocap4Face.TPChain, rhs: Mocap4Face.TPChain) -> Swift.Bool
+  public func hash(into hasher: inout Swift.Hasher)
+  public var hashValue: Swift.Int {
+    get
+  }
 }
 public protocol File {
   var path: Mocap4Face.Path { get }
@@ -3721,7 +3859,12 @@ extension Mocap4Face.PixelComponents : Swift.Equatable {}
 extension Mocap4Face.PixelComponents : Swift.Hashable {}
 extension Mocap4Face.FaceTrackerResult : Swift.Hashable {}
 extension Mocap4Face.FaceTrackerWithResult : Swift.Hashable {}
+extension Mocap4Face.TrackerEngine : Swift.Equatable {}
+extension Mocap4Face.TrackerEngine : Swift.Hashable {}
+extension Mocap4Face.TrackerVariant : Swift.Equatable {}
+extension Mocap4Face.TrackerVariant : Swift.Hashable {}
 extension Mocap4Face.FaceTrackerReprojectorResult : Swift.Hashable {}
+extension Mocap4Face.TransformsProcessorResult : Swift.Hashable {}
 extension Mocap4Face.FileWatchErrorSensitivity : Swift.Equatable {}
 extension Mocap4Face.FileWatchErrorSensitivity : Swift.Hashable {}
 extension Mocap4Face.Path : Swift.Hashable {}

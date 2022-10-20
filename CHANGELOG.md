@@ -1,6 +1,16 @@
 # Changelog
 All notable changes to this project will be documented in this file. This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## 0.5.0 - 2022-10-20
+### Fixed
+- Tfjs backend switching in TrackerGPUContext on JS now works properly
+
+### Changed
+- Improved overall tracking precision by introducing a better model
+- Added AdvancedFaceTrackerOptions to tracker creation methods to allow changing all options of the tracker
+  - Can switch between tracker variants (COMPATIBLE = tracker from v0.4.0, QUALITY = new tracker)
+  - Can switch engines for running the neural net on Android and iOS (CPU, GPU, Neural Engine)
+
 ## 0.4.0 - 2022-08-25
 ### Changed
 - BREAKING: Added OpenCL shader caching to Android GPU models. Because of this `createVideoTracker` and `createImageTracker` now requires an activity context to access cache directories.

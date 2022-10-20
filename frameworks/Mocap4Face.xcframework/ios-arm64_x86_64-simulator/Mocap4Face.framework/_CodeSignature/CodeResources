@@ -10,31 +10,31 @@
 		</data>
 		<key>Info.plist</key>
 		<data>
-		Qa8/SjD3N0x59kccThPKQk0K89g=
+		UKAz5rfXJSpcCRvgS9MqJM0/RDE=
 		</data>
 		<key>Modules/Mocap4Face.swiftmodule/arm64-apple-ios-simulator.swiftdoc</key>
 		<data>
-		bOCm4uocyYUpDkMqvwNQ1kkhpec=
+		EhUxys0zMiznDDRP5CL5gTcU+vg=
 		</data>
 		<key>Modules/Mocap4Face.swiftmodule/arm64-apple-ios-simulator.swiftinterface</key>
 		<data>
-		+vpWc49JvFhLvGnSxidrThTGqYs=
+		E35hlQa4T/oJRPsmC6brfuS3ZJM=
 		</data>
 		<key>Modules/Mocap4Face.swiftmodule/arm64-apple-ios-simulator.swiftmodule</key>
 		<data>
-		jPM4T4qNoSMONVTQWjICBexGKOo=
+		OZSMsr3aM/6KfnYrtsN8sWpr6qI=
 		</data>
 		<key>Modules/Mocap4Face.swiftmodule/arm64.swiftdoc</key>
 		<data>
-		bOCm4uocyYUpDkMqvwNQ1kkhpec=
+		EhUxys0zMiznDDRP5CL5gTcU+vg=
 		</data>
 		<key>Modules/Mocap4Face.swiftmodule/arm64.swiftinterface</key>
 		<data>
-		+vpWc49JvFhLvGnSxidrThTGqYs=
+		E35hlQa4T/oJRPsmC6brfuS3ZJM=
 		</data>
 		<key>Modules/Mocap4Face.swiftmodule/arm64.swiftmodule</key>
 		<data>
-		jPM4T4qNoSMONVTQWjICBexGKOo=
+		OZSMsr3aM/6KfnYrtsN8sWpr6qI=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -54,42 +54,42 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			PVKOAXbrP1uvOgDyAzTwiMZuvMJAB9J6lHMjl4tT0Rc=
+			OHOHrSEF+qUH1LlHpwxgilSrlyO3AquYmoXmzOnyUUM=
 			</data>
 		</dict>
 		<key>Modules/Mocap4Face.swiftmodule/arm64-apple-ios-simulator.swiftinterface</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			JlwJzeF/XRHokhY4UtuAy+HTCmt9+SkosWO1eJav3sI=
+			craSzh9fIcHmyT/PFqpTWPbnD30mZLssRDTcR8WNpJE=
 			</data>
 		</dict>
 		<key>Modules/Mocap4Face.swiftmodule/arm64-apple-ios-simulator.swiftmodule</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			wzKdTWJuWrfQ45onxQj7AFTfewPqHNrhJlO/FOyV9A8=
+			yKCTfLdX3iQtOJG0z1yuXYevS1oF0we5eqd8c9u/dV4=
 			</data>
 		</dict>
 		<key>Modules/Mocap4Face.swiftmodule/arm64.swiftdoc</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			PVKOAXbrP1uvOgDyAzTwiMZuvMJAB9J6lHMjl4tT0Rc=
+			OHOHrSEF+qUH1LlHpwxgilSrlyO3AquYmoXmzOnyUUM=
 			</data>
 		</dict>
 		<key>Modules/Mocap4Face.swiftmodule/arm64.swiftinterface</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			JlwJzeF/XRHokhY4UtuAy+HTCmt9+SkosWO1eJav3sI=
+			craSzh9fIcHmyT/PFqpTWPbnD30mZLssRDTcR8WNpJE=
 			</data>
 		</dict>
 		<key>Modules/Mocap4Face.swiftmodule/arm64.swiftmodule</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			wzKdTWJuWrfQ45onxQj7AFTfewPqHNrhJlO/FOyV9A8=
+			yKCTfLdX3iQtOJG0z1yuXYevS1oF0we5eqd8c9u/dV4=
 			</data>
 		</dict>
 		<key>Modules/module.modulemap</key>
