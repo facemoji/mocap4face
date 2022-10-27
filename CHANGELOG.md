@@ -1,6 +1,10 @@
 # Changelog
 All notable changes to this project will be documented in this file. This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## 0.5.1 - 2022-10-27
+### Fixed
+- Bad performance with new tracker on Javascript WebGL backend
+
 ## 0.5.0 - 2022-10-20
 ### Fixed
 - Tfjs backend switching in TrackerGPUContext on JS now works properly

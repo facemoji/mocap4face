@@ -92,7 +92,7 @@ allprojects {
 }
 ```
 
-3. To use the SDK in your project, add `implementation 'co.facemoji:mocap4face:0.5.0'` to your Gradle dependencies
+3. To use the SDK in your project, add `implementation 'co.facemoji:mocap4face:0.5.1'` to your Gradle dependencies
 
 ### Web
 
